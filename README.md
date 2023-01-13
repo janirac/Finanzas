@@ -35,4 +35,26 @@ Finanzas will be implemented using the collection of the following technologies:
 - Inflation API ~ giving monthly and yearly inflation rates for a subset of countries
 
 ## Implementation Timeline
+### Friday Afternoon & Weekend
+- Project setup 
+- Implement basic layout, initial html and css
+- Implement the calculator functionality
+- Implement the dropdown box functionality
+- Start creating a class for the app for the budgeting functionality
+### Monday 
+- Finish budgeting functionality
+- Make sure localstorage is working
+- Functionality for default emojis and optional emojis 
+### Tuesday
+- Create draggable objects
+- Create functionality for Financial note pad to pop up and blur the background 
+### Wednesday
+- Improve layout
+- Implement color palette 
+- Create logo for the app
+- Add error handling
+### Thursday Morning
+- Add instructions 
+- Improve on any design layout 
+- Make sure functionality is working
 
