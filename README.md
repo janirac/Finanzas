@@ -18,7 +18,7 @@ In addition, this project will include:
 - Instructions for how to work the app
 - A production README
 ## Wireframes
-
+![image info](./wireframe.png)
 ## Technologies, Libraries, APIs
 
 ## Implementation Timeline
