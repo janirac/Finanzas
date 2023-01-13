@@ -1,0 +1,16 @@
+@import "reset.css";
+* {
+  background-color: green;
+}
+
+body {
+  padding: 0px 20px;
+  background-color: green;
+}
+
+.main-header {
+  display: flex;
+
+  width: 1000px;
+  text-align: center;
+}
