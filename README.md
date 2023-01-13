@@ -20,6 +20,19 @@ In addition, this project will include:
 ## Wireframes
 ![image info](./wireframe.png)
 ## Technologies, Libraries, APIs
+Finanzas will be implemented using the collection of the following technologies:
+
+### Core Languages
+- CSS
+- JavaScript
+- HTML
+
+### Core Libraries
+- Rechart ~ Charting
+- Draggable ~ Make JS objects dragging and animated 
+
+### APIs
+- Inflation API ~ giving monthly and yearly inflation rates for a subset of countries
 
 ## Implementation Timeline
 
