@@ -1,16 +1,22 @@
-@import "reset.css";
-* {
-  background-color: green;
-}
-
 body {
-  padding: 0px 20px;
-  background-color: green;
-}
+  background-color: gray;
 
+  .main-section {
+    margin: auto;
+    display: flex;
+    width: 1000px;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .transaction-section, .overview-section {
+      width: 400px;
+      background-color: white;
+    }
+
+  }
+}
 .main-header {
   display: flex;
-
   width: 1000px;
   text-align: center;
 }

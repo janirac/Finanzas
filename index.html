@@ -9,10 +9,22 @@
   </head>
   <body>
     <h1 class="main-header" id="main-header">Finanzas</h1>
-    <nav class="navigation-bar"> Navigation Bar</nav>
-    <div class="rev-calc"> Revenue Calculator</div>
-    <div class="transaction-calc"> Transaction Calculator</div>
-    <div class="graph"> Graph </div>
+    <main class="main-section"> 
+      <div class="transaction-section">
+        <nav class="navigation-bar">
+          <button class="dropbtn">Navigation Bar</button>
+          <div id="navigation-bar">
+            <li>Transaction</li>
+            <li>Revenue</li>
+          </div>
+        </nav>
+        <div class="rev-calc"> Revenue Calculator</div>
+        <div class="transaction-calc"> Transaction Calculator</div>
+      </div>
+      <div class="overview-section">
+        <div class="graph"> Graph </div>
+      </div>
+    </main>
     <script src="./dist/main.js"></script> 
   </body>
 </html>
