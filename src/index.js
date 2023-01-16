@@ -84,16 +84,14 @@ const handleClickEvent = (event) => {
         case KEY_DOT:
         case KEY_DELETE:
             calc.updateAmount(event.target.innerHTML)
+            calc.updateDisplayAmount()
         break;
 
         case KEY_ADD_TRANSACTION:
             app.addTransaction(currentTransactionType, amount, category, frequency, date)
+            calc.resetCalculator()
         break;
-
     }
-
-
-    calc.updateDisplayAmount()
 }
 
 calc.selectedKeysAmount()

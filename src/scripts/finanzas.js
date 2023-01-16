@@ -42,12 +42,16 @@ class Finanzas {
             this.revenueTransactions.push(transaction)
             this.totalRevenue += transaction.amount
         }
-
+        
         this.showTransactions()
     }
 
     showTransactions(){
         console.log(this.transactions)
+        console.log({
+            "spending": this.spendingTransactions,
+            "revenue": this.revenueTransactions
+        })
     }
 }
 

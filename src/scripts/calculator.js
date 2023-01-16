@@ -1,3 +1,5 @@
+const screenAmount = document.getElementById("screen-amount")
+
 class Calculator {
     constructor(){
         this.selectedKeys = []
@@ -32,17 +34,18 @@ class Calculator {
     }
 
     updateDisplayAmount(){
-        let screenAmount = document.getElementById("screen-amount")
-        screenAmount.innerHTML = "$" + this.amount
-        // display NAN when I put nothing in yet
+        screenAmount.innerHTML = this.amount
+        // display NAN when I click something thats not a number
     }
 
     resetCalculator(){
         this.selectedKeys = []
+        screenAmount.innerHTML = "0.00" // cant get the number to disappear when I hit the add transaction
     }
 
     selectedKeysAmount(){ 
         this.amount = parseFloat(this.selectedKeys.join(""))
+        // make the 0 show
         return this.amount
     }
 

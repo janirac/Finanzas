@@ -48,7 +48,6 @@ export const FREQUENCY = {
     [ONE_TIME]: ONE_TIME
 }
 
-// category section for constants
 export const REVENUE_CATEGORIES = {
     [INCOME]: INCOME,
     [OTHER]: OTHER
