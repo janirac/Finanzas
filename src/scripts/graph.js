@@ -1,0 +1,9 @@
+class Graph{
+    constructor(){
+        
+    }
+
+    addTransaction(){
+        
+    }
+}

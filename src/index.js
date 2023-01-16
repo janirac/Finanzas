@@ -85,10 +85,12 @@ const handleClickEvent = (e) => {
         break;
 
         case KEY_ADD_TRANSACTION:
+            calc.selectedKeysAmount()
         break;
     }
 }
 
+calc.selectedKeysAmount()
 // app.addTransaction(currentTransactionType, amount, category, frequency, date)
 
 document.addEventListener("click", handleClickEvent)
