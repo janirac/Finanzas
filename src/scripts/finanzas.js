@@ -29,13 +29,15 @@ class Finanzas {
             frequency,
             date
         })
+
+        this.showTransactions()
     }
 
-    // showTransactions(){
-    //     console.log(this.transactions)
-    // }
+    showTransactions(){
+        console.log(this.transactions)
+    }
 
-    
+
 }
 
 
