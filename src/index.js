@@ -33,8 +33,8 @@ const graph = new Graph(app, calc)
 
 
 let currentTransactionType = TRANSACTION_TYPES[REVENUE]
-let amount = 0
-let category = ""
+let amount = calc.getAmount()
+let category = null
 let frequency = 0
 let date = ""
 
@@ -87,9 +87,11 @@ const handleClickEvent = (event) => {
         break;
 
         case KEY_ADD_TRANSACTION:
-            calc.selectedKeysAmount()
+            app.addTransaction(currentTransactionType, amount, category, frequency, date)
         break;
+
     }
+
 
     calc.updateDisplayAmount()
 }

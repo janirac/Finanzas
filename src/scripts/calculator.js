@@ -5,6 +5,10 @@ class Calculator {
         console.log(this.selectedKeys)
     }
 
+    getAmount(){
+        return this.amount
+    }
+
     updateAmount(key){
         let dotIndex = this.selectedKeys.indexOf(".")
         if(dotIndex > -1 && this.selectedKeys.slice(dotIndex).length > 2){

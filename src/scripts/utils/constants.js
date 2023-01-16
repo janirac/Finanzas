@@ -21,6 +21,16 @@ export const BI_WEEKLY = "bi-weekly"
 export const BI_MONTHLY = "bi-monthly"
 export const MONTHLY = "monthly"
 export const YEARLY = "yearly" 
+export const ONE_TIME = "one-time"
+export const INCOME = "💵income"
+export const OTHER = "create your own"
+export const STUDENT_LOANS = "🎓student loans"
+export const CAR_INSURANCE = "🚗car insurance"
+export const GROCERIES = "🥑groceries"
+export const CREDIT_CARD = "💳credit card"
+export const RENT = "🏠rent"
+export const UTILITIES = "💡utilities"
+export const ACTIVITIES = "🏕️activities"
 
 
 export const TRANSACTION_TYPES = { 
@@ -34,5 +44,23 @@ export const FREQUENCY = {
     [BI_WEEKLY]: BI_WEEKLY,
     [BI_MONTHLY]: BI_MONTHLY,
     [MONTHLY]: MONTHLY,
-    [YEARLY]: YEARLY
+    [YEARLY]: YEARLY,
+    [ONE_TIME]: ONE_TIME
+}
+
+// category section for constants
+export const REVENUE_CATEGORIES = {
+    [INCOME]: INCOME,
+    [OTHER]: OTHER
+}
+
+export const SPENDING_CATEGORIES = {
+    [STUDENT_LOANS]: STUDENT_LOANS,
+    [CAR_INSURANCE]: CAR_INSURANCE,
+    [GROCERIES]: GROCERIES,
+    [CREDIT_CARD]: CREDIT_CARD,
+    [RENT]: RENT,
+    [UTILITIES]: UTILITIES,
+    [ACTIVITIES]: ACTIVITIES,
+    [OTHER]: OTHER
 }
