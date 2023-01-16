@@ -53,7 +53,7 @@ table {
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
 body {
-  background-color: #f3f3f3;
+  background-color: #e6b1d8;
 }
 body .main-section {
   margin: auto;
@@ -65,7 +65,7 @@ body .main-section {
 body .main-section .transaction-section, body .main-section .overview-section {
   width: 45%;
   padding: 20px;
-  background-color: white;
+  background-color: rgb(243, 234, 240);
   border: 1px solid black;
   border-radius: 5px;
 }
