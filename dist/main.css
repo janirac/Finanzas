@@ -66,8 +66,6 @@ body .main-section .transaction-section, body .main-section .overview-section {
   width: 45%;
   padding: 20px;
   background-color: rgb(243, 234, 240);
-  border: 1px solid black;
-  border-radius: 5px;
 }
 
 .main-header {

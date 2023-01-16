@@ -32,7 +32,6 @@ export const RENT = "🏠rent"
 export const UTILITIES = "💡utilities"
 export const ACTIVITIES = "🏕️activities"
 
-
 export const TRANSACTION_TYPES = { 
     [REVENUE]: REVENUE, 
     [SPENDING]: SPENDING

@@ -28,10 +28,6 @@ const app = new Finanzas()
 const calc = new Calculator()
 const graph = new Graph(app, calc)
 
-
-
-
-
 let currentTransactionType = TRANSACTION_TYPES[REVENUE]
 let category = null
 let frequency = 0
@@ -94,7 +90,7 @@ const handleClickEvent = (event) => {
     }
 }
 
-calc.selectedKeysAmount()
+// calc.selectedKeysAmount()
 // app.addTransaction(currentTransactionType, amount, category, frequency, date)
 
 document.addEventListener("click", handleClickEvent)
