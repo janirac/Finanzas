@@ -6,6 +6,11 @@ class Calculator {
     }
 
     updateAmount(key){
+        let dotIndex = this.selectedKeys.indexOf(".")
+        if(dotIndex > -1 && this.selectedKeys.slice(dotIndex).length > 2){
+            return null //why did I need to return null instead return 
+        }
+
         if(key === "Delete"){
             this.selectedKeys.pop()
         } else if(key === "."){
@@ -17,10 +22,15 @@ class Calculator {
         } else {
             this.selectedKeys.push(key)
         }
-    
         console.log(this.selectedKeys)
         console.log(this.selectedKeysAmount())
 
+    }
+
+    updateDisplayAmount(){
+        let screenAmount = document.getElementById("screen-amount")
+        screenAmount.innerHTML = "$" + this.amount
+        // display NAN when I put nothing in yet
     }
 
     resetCalculator(){
@@ -28,10 +38,11 @@ class Calculator {
     }
 
     selectedKeysAmount(){ 
-        this.amount = parseFloat(this.selectedKeys.join("")).toFixed(2)
-        return amount
+        this.amount = parseFloat(this.selectedKeys.join(""))
+        return this.amount
     }
+
+    
 }
-// Numbers continue to be added after 2 decimal places
 
 export default Calculator;

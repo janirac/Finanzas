@@ -1,7 +1,11 @@
 class Finanzas {
     constructor(){
         this.name = ""
-        this.transactions = []
+        this.revenueTransactions = []
+        this.spendingTransactions = []
+        this.totalSpending = 0
+        this.totalRevenue = 0
+        this.totalSpendingWithInflation = 0
     }
 
     start(){
@@ -22,13 +26,22 @@ class Finanzas {
     }
 
     addTransaction(transactionType, amount, category, frequency, date){
-        this.transactions.push({
+        const transaction = {
             transactionType,
             amount,
             category,
             frequency,
             date
-        })
+        }
+
+        if (transactionType === "spending") {
+            this.spendingTransactions.push(transaction)
+            this.totalSpending += transaction.amount
+
+        } else if (transactionType === "revenue"){
+            this.revenueTransactions.push(transaction)
+            this.totalRevenue += transaction.amount
+        }
 
         this.showTransactions()
     }
@@ -36,8 +49,6 @@ class Finanzas {
     showTransactions(){
         console.log(this.transactions)
     }
-
-
 }
 
 

@@ -1,33 +1,35 @@
 import Finanzas from "./scripts/finanzas"; 
 import Calculator from "./scripts/calculator";
+import Graph from "./scripts/graph";
+import {
+    SPENDING_BUTTON, 
+    REVENUE_BUTTON,
+    KEY_0,
+    KEY_1,
+    KEY_2,
+    KEY_3,
+    KEY_4,
+    KEY_5,
+    KEY_6,
+    KEY_7,
+    KEY_8,
+    KEY_9,
+    KEY_ADD_TRANSACTION,
+    KEY_DELETE,
+    KEY_DOT,
+    SPENDING,
+    REVENUE,
+    TRANSACTION_TYPES
+} from "./scripts/utils/constants";
 
 // import "./styles/main.scss";
 
 const app = new Finanzas()
 const calc = new Calculator()
+const graph = new Graph(app, calc)
 
-const REVENUE = "revenue"
-const SPENDING = "spending" 
-const REVENUE_BUTTON = "revenue-button"
-const SPENDING_BUTTON = "spending-button"
-const KEY_1 = "key1"
-const KEY_2 = "key2"
-const KEY_3 = "key3"
-const KEY_4 = "key4"
-const KEY_5 = "key4"
-const KEY_6 = "key5"
-const KEY_7 = "key6"
-const KEY_8 = "key7"
-const KEY_9 = "key8"
-const KEY_0 = "key9"
-const KEY_DOT = "keydot"
-const KEY_DELETE = "keyDelete"
-const KEY_ADD_TRANSACTION = "keyAddTransaction"
 
-const TRANSACTION_TYPES = { 
-    [REVENUE]: REVENUE, 
-    [SPENDING]: SPENDING
-}
+
 
 
 let currentTransactionType = TRANSACTION_TYPES[REVENUE]
@@ -59,8 +61,8 @@ const updateSelectedTransactionType = (type) => {
     }
 }
 
-const handleClickEvent = (e) => {
-    switch(e.target.id) {
+const handleClickEvent = (event) => {
+    switch(event.target.id) {
         case SPENDING_BUTTON: 
             updateSelectedTransactionType(SPENDING_BUTTON)
         break;
@@ -81,13 +83,15 @@ const handleClickEvent = (e) => {
         case KEY_0:
         case KEY_DOT:
         case KEY_DELETE:
-            calc.updateAmount(e.target.innerHTML)
+            calc.updateAmount(event.target.innerHTML)
         break;
 
         case KEY_ADD_TRANSACTION:
             calc.selectedKeysAmount()
         break;
     }
+
+    calc.updateDisplayAmount()
 }
 
 calc.selectedKeysAmount()
