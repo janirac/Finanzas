@@ -43,8 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // app.addTransaction("revenue", 200, ":) salary", "yearly", "12/31/2010")
     // app.addTransaction("revenue", 300, ":) salary", "yearly", "12/31/2010")
     // app.showTransactions() 
-    // Used lines 12 - 15 for testing purposes
+    document.getElementById('transaction-date').valueAsDate = new Date();
 })
+
 
 const updateSelectedTransactionType = (type) => {
     if(type === SPENDING_BUTTON){
@@ -84,14 +85,16 @@ const handleClickEvent = (event) => {
 
         case KEY_ADD_TRANSACTION:
             let currentAmount = calc.getAmount()
+            let frequency = document.getElementById("frequency-select").value
+
             app.addTransaction(currentTransactionType, currentAmount, category, frequency, date)
             calc.resetCalculator()
         break;
     }
 }
 
+
 // calc.selectedKeysAmount()
-// app.addTransaction(currentTransactionType, amount, category, frequency, date)
 
 document.addEventListener("click", handleClickEvent)
 

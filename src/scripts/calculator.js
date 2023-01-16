@@ -35,25 +35,23 @@ class Calculator {
             this.selectedKeys.push(key)
         }
 
+        this.setAmount()
         console.log(this.selectedKeys)
-        // console.log(this.getDisplayAmount())
-
     }
 
     updateDisplayAmount(){
-        // display NAN when I click something thats not a number
         screenAmount.innerHTML = this.selectedKeys.join("")
     }
 
     resetCalculator(){
         this.selectedKeys = []
-        screenAmount.innerHTML = "0.00" // cant get the number to disappear when I hit the add transaction
+        this.amount = 0
+        screenAmount.innerHTML = "0.00" 
     }
 
-    // getDisplayAmount(){ 
-    //     this.amount = parseFloat(this.selectedKeys.join(""))
-    //     // make the 0 show
-    // }
+    setAmount(){ 
+        this.amount = parseFloat(this.selectedKeys.join(""))
+    }
 }
 
 export default Calculator;
