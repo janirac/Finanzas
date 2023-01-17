@@ -40,6 +40,14 @@ class Calculator {
     }
 
     updateDisplayAmount(){
+        if (this.selectedKeys.length > 0){
+            document.getElementsByClassName("screen")[0].classList.remove("empty-display-text-color");
+            document.getElementsByClassName("screen")[0].classList.add("active-display-text-color");
+        } else {
+            document.getElementsByClassName("screen")[0].classList.remove("active-display-text-color");
+            document.getElementsByClassName("screen")[0].classList.add("empty-display-text-color");
+        }
+
         screenAmount.innerHTML = this.selectedKeys.join("")
     }
 

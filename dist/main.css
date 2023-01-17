@@ -126,7 +126,6 @@ body .screen {
   margin: auto;
   text-align: center;
   font-size: 50px;
-  color: #d6c2c2;
 }
 body .middle-section {
   display: flex;
@@ -195,4 +194,12 @@ body .slider.round:before {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 65px;
   justify-content: center;
+}
+
+.empty-display-text-color {
+  color: #d6c2c2;
+}
+
+.active-display-text-color {
+  color: #a655a6;
 }
