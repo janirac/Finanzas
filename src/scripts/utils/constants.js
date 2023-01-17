@@ -62,3 +62,8 @@ export const SPENDING_CATEGORIES = {
     [ACTIVITIES]: ACTIVITIES,
     [OTHER]: OTHER
 }
+
+// export const INCOME_CATEGORIES_HTML = {
+//     [INCOME_CATEGORY]: "<button id='income-category' value='income'>💵income</button>",
+//     [OTHER_REVENUE_CATEGORY]: "<button id='other-rev-category' value='other'>create your own</button>"
+// }
