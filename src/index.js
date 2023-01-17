@@ -86,6 +86,8 @@ const handleClickEvent = (event) => {
         case KEY_ADD_TRANSACTION:
             let currentAmount = calc.getAmount()
             let frequency = document.getElementById("frequency-select").value
+            let date = document.getElementById("transaction-date").value
+            // let category = document.getElementById("category").value
 
             app.addTransaction(currentTransactionType, currentAmount, category, frequency, date)
             calc.resetCalculator()

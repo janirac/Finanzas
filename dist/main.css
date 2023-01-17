@@ -71,6 +71,59 @@ body .main-section .transaction-section, body .main-section .overview-section {
   padding: 20px;
   background-color: rgb(243, 234, 240);
 }
+body .main-section .transaction-section .navigation-bar, body .main-section .overview-section .navigation-bar {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+body .main-section .transaction-section .navigation-bar .transaction-button, body .main-section .overview-section .navigation-bar .transaction-button {
+  margin: 0 6px;
+}
+body .key-group {
+  display: flex;
+  justify-content: center;
+}
+body .calc-btn {
+  color: #a655a6;
+  background-color: #f2e2f5;
+  font-size: 15px;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 10px;
+  width: 75px;
+  font-weight: bold;
+}
+body #keyAddTransaction {
+  width: 100%;
+}
+body #keydot {
+  padding-top: 0px;
+  font-size: 64px;
+  line-height: 0;
+  vertical-align: middle;
+  text-align: center;
+  padding-bottom: 32px;
+}
+body .screen {
+  padding: 10px;
+  width: 100px;
+  margin: auto;
+  text-align: center;
+  font-size: 50px;
+  color: #d6c2c2;
+}
+body .middle-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+body .middle-section .category-section, body .middle-section .calculator-section {
+  border: 1px dotted #3433b4;
+  height: auto;
+  width: 50%;
+  margin: 5px;
+  padding: 5px;
+}
 body .inflation-switch {
   position: relative;
   display: inline-block;

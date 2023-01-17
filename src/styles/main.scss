@@ -14,9 +14,71 @@ body {
       background-color: rgb(243, 234, 240);
       // border: 1px solid black;
       // border-radius: 5px;
+
+      .navigation-bar {
+        margin: auto;
+        display: flex;
+        justify-content: center;
+
+        .transaction-button {
+          margin: 0 6px;
+        }
+      }
     }
 
   }
+
+  .key-group {
+    display: flex;
+    justify-content: center;
+  }
+
+  .calc-btn {
+    color: #a655a6;
+    background-color: #f2e2f5;
+    font-size: 15px;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+    width: 75px;
+    font-weight: bold;
+  }
+
+  #keyAddTransaction {
+    width: 100%;
+  }
+
+  #keydot {
+    padding-top: 0px;
+    font-size: 64px;
+    line-height: 0;
+    vertical-align: middle;
+    text-align: center;
+    padding-bottom: 32px;
+  }
+  .screen {
+    padding: 10px;
+    width: 100px;
+    margin: auto;
+    text-align: center;
+    font-size: 50px;
+    color: #d6c2c2;
+  }
+
+  .middle-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .category-section, .calculator-section {
+      border: 1px dotted #3433b4;
+      height: auto;
+      width: 50%;
+      margin: 5px;
+      padding: 5px;
+    }
+  }
+
 
   /* The switch - the box around the slider */
 .inflation-switch {
