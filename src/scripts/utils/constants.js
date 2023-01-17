@@ -64,6 +64,57 @@ export const SPENDING_CATEGORIES = {
 }
 
 export const INCOME_CATEGORIES_HTML = {
-    [INCOME]: "<button id='income-category' value='income'>💵income</button>",
-    [OTHER]: "<button id='other-rev-category' value='other'>create your own</button>"
+    [INCOME]: {
+        id: "income",
+        emoji: "💵",
+        categoryText: "income"
+    },
+    [OTHER]: {
+        id: "other",
+        emoji: "",
+        categoryText: "create your own"
+    }
+}
+
+export const SPENDING_CATEGORIES_HTML = {
+    [STUDENT_LOANS]: {
+        id: "student-loans",
+        emoji: "🎓",
+        categoryText: "student loans"
+    },
+    [CAR_INSURANCE]: {
+        id: "car-insurance",
+        emoji: "🚗",
+        categoryText: "car insurance"
+    },
+    [GROCERIES]: {
+        id: "groceries",
+        emoji: "🥑",
+        categoryText: "groceries"
+    },
+    [CREDIT_CARD]: {
+        id: "credit-card",
+        emoji: "💳",
+        categoryText: "credit card"
+    },
+    [RENT]: {
+        id: "rent",
+        emoji: "🏠",
+        categoryText: "rent"
+    },
+    [UTILITIES]: {
+        id: "utilities",
+        emoji: "💡",
+        categoryText: "utilities"
+    },
+    [ACTIVITIES]: {
+        id: "activities",
+        emoji: "🏕️",
+        categoryText: "activities"
+    },
+    [OTHER]: {
+        id: "other",
+        emoji: "",
+        categoryText: "create your own"
+    }
 }

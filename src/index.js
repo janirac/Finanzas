@@ -20,7 +20,14 @@ import {
     SPENDING,
     REVENUE,
     TRANSACTION_TYPES,
-    INCOME_CATEGORIES_HTML
+    INCOME_CATEGORIES_HTML,
+    SPENDING_CATEGORIES_HTML,
+    INCOME,
+    CAR_INSURANCE,
+    GROCERIES,
+    CREDIT_CARD,
+    UTILITIES,
+    ACTIVITIES
 } from "./scripts/utils/constants";
 
 // import "./styles/main.scss";
@@ -35,17 +42,31 @@ let frequency = 0
 let date = ""
 
 const populateCategorySection = () => {
-    // for (let i = 0; i < REVENUE_CATEGORIES.length; i++){
-    //     const button = document.createElement('button').innerHTML = "income"
-    //     document.getElementById("bottom-calc-section").appendChild(button)
-    // }
+    document.getElementById("bottom-calc-section").innerHTML = " "
 
-    Object.values(INCOME_CATEGORIES_HTML).forEach(button => {
-        const btn = document.createElement('button')  //.innerText = button; why doesn't this work
+    if(currentTransactionType === TRANSACTION_TYPES[REVENUE]){
+        Object.values(INCOME_CATEGORIES_HTML).forEach(button => {
+            const btn = document.createElement('button')  //.innerText = button; why doesn't this work
+            btn.classList.add("category-button")
+            btn.setAttribute("id", button.id)
+    
+            btn.innerText = `${button.emoji} ${button.categoryText}`
+            document.getElementById("bottom-calc-section").appendChild(btn)
+        });
+    } else if(currentTransactionType === TRANSACTION_TYPES[SPENDING]) {
+        Object.values(SPENDING_CATEGORIES_HTML).forEach(button => {
+            const btn = document.createElement('button')  //.innerText = button; why doesn't this work
+            btn.classList.add("category-button")
+            btn.setAttribute("id", button.id)
+    
+            btn.innerText = `${button.emoji} ${button.categoryText}`
+            document.getElementById("bottom-calc-section").appendChild(btn)
+        });
+    }
+}
 
-        btn.innerText = button
-        document.getElementById("bottom-calc-section").appendChild(btn)
-    });
+const currentClickedCategoryButton = () => {
+
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -76,6 +97,7 @@ const updateSelectedTransactionType = (type) => {
         changeRevenueColor.classList.remove("clicked-display-text-color")
         bottomCalcSection.classList.add("spending-category-section");
         bottomCalcSection.classList.remove("revenue-category-section")
+        populateCategorySection()
         console.log(currentTransactionType);
     } else if(type === REVENUE_BUTTON){
         currentTransactionType = TRANSACTION_TYPES[REVENUE]
@@ -83,6 +105,7 @@ const updateSelectedTransactionType = (type) => {
         changeSpendingColor.classList.remove("clicked-display-text-color")
         bottomCalcSection.classList.add("revenue-category-section");
         bottomCalcSection.classList.remove("spending-category-section")
+        populateCategorySection()
         console.log(currentTransactionType);
     }
 }
@@ -117,10 +140,30 @@ const handleClickEvent = (event) => {
             let currentAmount = calc.getAmount()
             let frequency = document.getElementById("frequency-select").value
             let date = document.getElementById("transaction-date").value
-            // let category = document.getElementById("category").value
+            // let category = document.getElementById("bottom-calc-section")
 
             app.addTransaction(currentTransactionType, currentAmount, category, frequency, date)
             calc.resetCalculator()
+        break;
+
+        case INCOME:
+        // break;
+        case OTHER:
+        // break;
+        case STUDENT_LOANS:
+        // break;
+        case CAR_INSURANCE:
+        // break;
+        case GROCERIES:
+        // break;
+        case CREDIT_CARD:
+        // break;
+        case RENT:
+        // break;
+        case UTILITIES:
+        // break;
+        case ACTIVITIES:
+            let category = event.target.innerHTML
         break;
     }
 }
