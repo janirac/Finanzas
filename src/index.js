@@ -19,7 +19,8 @@ import {
     KEY_DOT,
     SPENDING,
     REVENUE,
-    TRANSACTION_TYPES
+    TRANSACTION_TYPES,
+    INCOME_CATEGORIES_HTML
 } from "./scripts/utils/constants";
 
 // import "./styles/main.scss";
@@ -33,13 +34,34 @@ let category = null
 let frequency = 0
 let date = ""
 
+const populateCategorySection = () => {
+    // for (let i = 0; i < REVENUE_CATEGORIES.length; i++){
+    //     const button = document.createElement('button').innerHTML = "income"
+    //     document.getElementById("bottom-calc-section").appendChild(button)
+    // }
+
+    Object.values(INCOME_CATEGORIES_HTML).forEach(button => {
+        const btn = document.createElement('button')  //.innerText = button; why doesn't this work
+
+        btn.innerText = button
+        document.getElementById("bottom-calc-section").appendChild(btn)
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     // 1. find out how to write to the browser local storage or cookie
     // 2. Check the browser local storage for the finanza app configuration file.
     // 3. if there is a configuration file then pass it as a parameter to the app
 
     // app.start()
+        //  Create a button element
+        // const button = document.createElement('button')
+
+        //  Set the button text to 'Can you click me?'
+        // button.innerText = 'Can you click me?'
+
     document.getElementById('transaction-date').valueAsDate = new Date();
+    populateCategorySection()
 })
 
 

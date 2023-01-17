@@ -37,12 +37,12 @@ class Finanzas {
         if (transactionType === "spending") {
             this.spendingTransactions.push(transaction)
             this.totalSpending += transaction.amount
+            this.totalSpendingWithInflation += this.totalSpending
 
         } else if (transactionType === "revenue"){
             this.revenueTransactions.push(transaction)
             this.totalRevenue += transaction.amount
         }
-        
         this.showTransactions()
     }
 
