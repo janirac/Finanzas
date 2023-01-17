@@ -54,10 +54,6 @@ table {
   \*************************************************************************************************************************************/
 body {
   background-color: #e6b1d8;
-  /* The switch - the box around the slider */
-  /* Hide default HTML checkbox */
-  /* The slider */
-  /* Rounded sliders */
 }
 body .main-section {
   margin: auto;
@@ -78,6 +74,21 @@ body .main-section .transaction-section .navigation-bar, body .main-section .ove
 }
 body .main-section .transaction-section .navigation-bar .transaction-button, body .main-section .overview-section .navigation-bar .transaction-button {
   margin: 0 6px;
+  background-color: rgb(228, 141, 204);
+  border-radius: 10px;
+  border-style: none;
+  color: #08000d;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 5px;
+  margin: 0px 5px;
+  padding: 8px 13px;
+  text-align: center;
+  cursor: pointer;
+}
+body .main-section .transaction-section .navigation-bar .transaction-button:hover, body .main-section .overview-section .navigation-bar .transaction-button:hover {
+  background-color: rgb(160, 160, 255);
+  color: white;
 }
 body .key-group {
   display: flex;
@@ -92,6 +103,11 @@ body .calc-btn {
   border-radius: 10px;
   width: 75px;
   font-weight: bold;
+  cursor: pointer;
+}
+body .calc-btn:hover {
+  background-color: rgb(160, 160, 255);
+  color: white;
 }
 body #keyAddTransaction {
   width: 100%;
@@ -130,7 +146,7 @@ body .inflation-switch {
   width: 60px;
   height: 34px;
 }
-body .switch input {
+body .inflation-switch input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -143,18 +159,16 @@ body .slider {
   right: 0;
   bottom: 0;
   background-color: rgb(228, 141, 204);
-  -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 body .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
+  height: 10px;
+  width: 10px;
   left: 4px;
   bottom: 4px;
   background-color: rgba(255, 255, 255, 0.838);
-  -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 body input:checked + .slider {
@@ -164,15 +178,15 @@ body input:focus + .slider {
   box-shadow: 0 0 1px #741173;
 }
 body input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
 body .slider.round {
   border-radius: 34px;
+  width: 72%;
+  height: 50%;
 }
 body .slider.round:before {
-  border-radius: 50%;
+  border-radius: 100%;
 }
 
 .main-header {
