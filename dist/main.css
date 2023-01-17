@@ -90,6 +90,10 @@ body .main-section .transaction-section .navigation-bar .transaction-button:hove
   background-color: rgb(160, 160, 255);
   color: white;
 }
+body .main-section .transaction-section .navigation-bar .clicked-display-text-color, body .main-section .overview-section .navigation-bar .clicked-display-text-color {
+  background-color: rgb(160, 160, 255);
+  color: white;
+}
 body .key-group {
   display: flex;
   justify-content: center;
@@ -104,6 +108,7 @@ body .calc-btn {
   width: 75px;
   font-weight: bold;
   cursor: pointer;
+  border: 3px solid purple;
 }
 body .calc-btn:hover {
   background-color: rgb(160, 160, 255);
@@ -133,11 +138,12 @@ body .middle-section {
   justify-content: space-between;
 }
 body .middle-section .category-section, body .middle-section .calculator-section {
-  border: 1px dotted #3433b4;
+  border: solid 4px purple;
   height: auto;
   width: 50%;
   margin: 5px;
   padding: 5px;
+  border-radius: 10px;
 }
 body .inflation-switch {
   position: relative;
@@ -150,6 +156,10 @@ body .inflation-switch input {
   width: 0;
   height: 0;
 }
+body .switch {
+  display: flex;
+  flex-direction: row-reverse;
+}
 body .slider {
   position: absolute;
   cursor: pointer;
@@ -158,7 +168,6 @@ body .slider {
   right: 0;
   bottom: 0;
   background-color: rgb(228, 141, 204);
-  transition: 0.4s;
 }
 body .slider:before {
   position: absolute;
@@ -168,7 +177,6 @@ body .slider:before {
   left: 4px;
   bottom: 4px;
   background-color: rgba(255, 255, 255, 0.838);
-  transition: 0.4s;
 }
 body input:checked + .slider {
   background-color: #9739D4;
@@ -202,4 +210,24 @@ body .slider.round:before {
 
 .active-display-text-color {
   color: #a655a6;
+}
+
+.top-section {
+  margin: 3px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#transaction-date {
+  background-color: #f2e2f5;
+  color: #a655a6;
+  border-radius: 4px;
+  border: 2px solid purple;
+}
+
+#frequency-select {
+  background-color: #f2e2f5;
+  color: #a655a6;
+  border-radius: 4px;
+  border: 2px solid purple;
 }

@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 2. Check the browser local storage for the finanza app configuration file.
     // 3. if there is a configuration file then pass it as a parameter to the app
 
-    // app.start()
+    app.start()
     // app.addTransaction("revenue", 100, ":) salary", "yearly", "12/31/2010")
     // app.addTransaction("revenue", 200, ":) salary", "yearly", "12/31/2010")
     // app.addTransaction("revenue", 300, ":) salary", "yearly", "12/31/2010")
@@ -48,11 +48,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 const updateSelectedTransactionType = (type) => {
+    let changeRevenueColor = document.getElementById("revenue-button")
+    let changeSpendingColor = document.getElementById("spending-button")
+
     if(type === SPENDING_BUTTON){
         currentTransactionType = TRANSACTION_TYPES[SPENDING]
+        changeSpendingColor.classList.add("clicked-display-text-color")
+        changeRevenueColor.classList.remove("clicked-display-text-color")
         console.log(currentTransactionType);
     } else if(type === REVENUE_BUTTON){
         currentTransactionType = TRANSACTION_TYPES[REVENUE]
+        changeRevenueColor.classList.add("clicked-display-text-color")
+        changeSpendingColor.classList.remove("clicked-display-text-color")
         console.log(currentTransactionType);
     }
 }

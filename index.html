@@ -14,31 +14,34 @@
     <main class="main-section"> 
       <div class="transaction-section">
         <nav class="navigation-bar">
-                <button id="spending-button" class="transaction-button">
-                Spending
-                </button>
-              <button id="revenue-button" class="transaction-button">
+                <button id="revenue-button" class="transaction-button clicked-display-text-color">
                 Revenue
+                </button>
+              <button id="spending-button" class="transaction-button">
+                Spending
             </button>
         </nav>
         <div class="middle-section">
           <div class="category-section">
             DRAG HERE
           </div>
-          <div class="calculator-section"> Calculator
-            <div>
-              <input type="date" id="transaction-date"> 
-            </div>
-            <div class="frequency-section"> 
-              <select id="frequency-select">
-                <option value="monthly">monthly</option>
-                <option value="bi-weekly">bi-weekly</option>
-                <option value="bi-monthly">bi-monthly</option>
-                <option value="weekly">weekly</option>
-                <option value="daily">daily</option>
-                <option value="yearly">yearly</option>
-                <option value="one-time">onetime</option>
-              </select>
+          <div class="calculator-section">
+            <!-- <img src="IMG_9723.jpg" width="500" height="333"> -->
+            <div class="top-section">
+              <div>
+                <input type="date" id="transaction-date"> 
+              </div>
+              <div class="frequency-section"> 
+                <select id="frequency-select">
+                  <option value="monthly">monthly</option>
+                  <option value="bi-weekly">bi-weekly</option>
+                  <option value="bi-monthly">bi-monthly</option>
+                  <option value="weekly">weekly</option>
+                  <option value="daily">daily</option>
+                  <option value="yearly">yearly</option>
+                  <option value="one-time">onetime</option>
+                </select>
+              </div>
             </div>
             <div class="top-calculator-section"> 
               <div class="categories">  </div>
@@ -79,13 +82,13 @@
         </div>
       </div>
       <div class="overview-section">
-        <div class="graph"> Graph </div>
         <div class="switch">
           <label class="inflation-switch">
             <input type="checkbox">
             <span class="slider round"></span>
           </label>
         </div>
+        <div class="graph" id="graph"> </div>
       </div>
     </main>
     <script src="./dist/main.js"></script> 
