@@ -37,14 +37,15 @@ export const TRANSACTION_TYPES = {
     [SPENDING]: SPENDING
 }
 
+// these are frequencies by days
 export const FREQUENCY = {
-    [DAILY]: DAILY,
-    [WEEKLY]: WEEKLY,
-    [BI_WEEKLY]: BI_WEEKLY,
-    [BI_MONTHLY]: BI_MONTHLY,
-    [MONTHLY]: MONTHLY,
-    [YEARLY]: YEARLY,
-    [ONE_TIME]: ONE_TIME
+    [DAILY]: 1,
+    [WEEKLY]: 7,
+    [BI_WEEKLY]: 14,
+    [BI_MONTHLY]: 16, //this is harder to calculate because it changes based on month
+    [MONTHLY]: 30, //this is harder to calculate because it changes based on the current month
+    [YEARLY]: 365,
+    [ONE_TIME]: 0
 }
 
 export const REVENUE_CATEGORIES = {
@@ -118,3 +119,6 @@ export const SPENDING_CATEGORIES_HTML = {
         categoryText: "create your own"
     }
 }
+
+export const MONTH_NAMES = ["January", "February", "March", "April", "May", "June",
+"July", "August", "September", "October", "November", "December"];

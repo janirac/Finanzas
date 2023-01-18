@@ -1,0 +1,104 @@
+{
+    "revenue": [
+        {
+            "amount": 1100.88,
+            "category": "$ income",
+            "date": "2023-01-18",
+            "frequency": "monthly",
+            "transactionType": "revenue"
+        },
+        {
+            "amount": 500.00,
+            "category": "$ income",
+            "date": "2023-03-01",
+            "frequency": "one-time",
+            "transactionType": "revenue"
+        },
+        {
+            "amount": 1,
+            "category": "daily test",
+            "date": "2023-01-18",
+            "frequency": "daily",
+            "transactionType": "revenue"
+        },
+        {
+            "amount": 2,
+            "category": "weekly test",
+            "date": "2023-01-18",
+            "frequency": "weekly",
+            "transactionType": "revenue"
+        },
+        {
+            "amount": 4,
+            "category": "bi-weekly test",
+            "date": "2023-01-18",
+            "frequency": "bi-weekly",
+            "transactionType": "revenue"
+        },
+        {
+            "amount": 100,
+            "category": "Doordash",
+            "date": "2023-01-10",
+            "frequency": "one-time",
+            "transactionType": "revenue"
+        },
+        {
+            "amount": 250.00,
+            "category": "side hustle",
+            "date": "2023-01-18",
+            "frequency": "monthly",
+            "transactionType": "revenue"
+        },
+        {
+            "amount": 570.30,
+            "category": "rental income",
+            "date": "2023-01-30",
+            "frequency": "monthly",
+            "transactionType": "revenue"
+        }
+    ],
+    "spending": [
+        {
+            "amount": 300,
+            "category": "mortgage",
+            "date": "2023-01-18",
+            "frequency": "monthly",
+            "transactionType": "spending"
+        },
+        {
+            "amount": 340.00,
+            "category": "groceries",
+            "date": "2023-01-18",
+            "frequency": "bi-weekly",
+            "transactionType": "spending"
+        },
+        {
+            "amount": 1200.00,
+            "category": "car maintaince",
+            "date": "2023-02-05",
+            "frequency": "one-time",
+            "transactionType": "spending"
+        },
+        {
+            "amount": 277.00,
+            "category": "utility bills",
+            "date": "2023-01-18",
+            "frequency": "monthly",
+            "transactionType": "spending"
+        },
+        {
+            "amount": 200.00,
+            "category": "credit card",
+            "date": "2023-01-18",
+            "frequency": "monthly",
+            "transactionType": "spending"
+        },
+        {
+            "amount": 100,
+            "category": "activities",
+            "date": "2023-01-18",
+            "frequency": "monthly",
+            "transactionType": "spending"
+        }
+    ]
+}
