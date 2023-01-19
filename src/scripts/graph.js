@@ -81,32 +81,6 @@ class Graph{
             .attr("height", d => y(d[0]) - y(d[1]))
             .attr("width",x.bandwidth())
 
-
-            // .selectAll("rect")
-            // .data(data2.sort((a, b) => d3.descending(a.amount, b.amount)))
-            // .enter().append('rect')
-            // .attr("x", (d, i) => x(i))
-            // .attr("y", d => y(d.amount))
-            // .attr("height", d => y(0) - y(d.amount))
-            // .attr("width", x.bandwidth() + 5);
-
-
-        // function yAxis(g) {
-        //     g.attr("transform", `translate(${margin.left}, 0)`)
-        //     .call(d3.axisLeft(y).ticks(null, data.format))
-        //     .attr("font-size", '14px')
-        //     .attr("color", "purple")
-        // }
-        
-        // function xAxis(g) {
-        //     g.attr("transform", `translate(0,${height - margin.bottom})`)
-        //     .call(d3.axisBottom(x).tickFormat(i => data[i].month))
-        //     .attr("font-size", '10px')
-        //     .attr("color", "purple")
-        // }
-        
-        // svg.append("g").call(xAxis);
-        // svg.append("g").call(yAxis);
         svg.node();
 
     }
@@ -114,74 +88,6 @@ class Graph{
     upDateGraph() {
         d3.select('svg').remove()
     }
-    // setupSVG() {
-    //     const data = this.app.getRevenueData()
-        
-    //     const width = 600;
-    //     const height = 350;
-    //     const margin = { top: 50, bottom: 50, left: 50, right: 20 }
-        
-    //     const svg = d3.select('#graph')
-    //     .append('svg')
-    //     .attr('width', width)
-    //     .attr('height', height)
-
-    //     const xScale = d3.scaleBand()
-    //         .domain(d3.range(12))
-    //         .range([margin.left, width - margin.right])
-
-    //     const yScale = d3.scaleLinear()
-    //         .domain([0, this.app.largestRevenueAmount])
-    //         .range([height - margin.bottom, margin.top])
-
-    //     // const x_axis = d3.axisBottom().scale(xScale)
-    //     // const y_axis = d3.axisLeft().scale(yScale)
-
-    //     svg
-    //         .selectAll("rect")
-    //         .data(data)
-    //         .enter()
-    //         .append("rect")
-    //         .attr("y", function(d) {
-    //             // debugger
-    //             return yScale(d.amount)
-    //         })
-    //         .attr("x", function (d, i) {
-    //             return xScale(i)
-    //         })
-    //         .attr("height", function(d){
-    //             return yScale(d.amount)
-    //         })
-    //         .attr("width", xScale.bandwidth())
-    //         console.log(yScale(0))
-
-    //     // svg.append("g")
-    //     //     .attr("transform", "translate(50, 10)")
-    //     //     .call(y_axis)
-
-    //     // const xAxisTranslate = height - 20
-
-    //     // svg.append("g")
-    //     //     .attr("transform", "translate(50, " + xAxisTranslate +")")
-    //     //     .call(x_axis)
-
-    //     function yAxis(g) {
-    //         g.attr("transform", `translate(${margin.left}, 0)`)
-    //             .call(d3.axisLeft(yScale).ticks(null, data.format))
-    //             .attr("font-size", '20px')
-    //     }
-            
-    //     function xAxis(g) {
-    //         g.attr("transform", `translate(0,${height - margin.bottom})`)
-    //             .call(d3.axisBottom(xScale).tickFormat(i => data[i].name))
-    //             .attr("font-size", '20px')
-    //     }
-          
-    //     svg.append("g").call(xAxis);
-    //     svg.append("g").call(yAxis);
-    //     svg.node();
-        
-    // }
 }
 
     // Take the exampleTransactions object and turn in into multiple pieces of data

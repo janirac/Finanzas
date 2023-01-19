@@ -151,7 +151,7 @@ class Finanzas {
     }
 
     findLargestNumber(){
-        // debugger
+        // 
         this.largestScale = [
             this.totalSpendingWithInflation,
             this.largestSpendingAmount,
@@ -198,7 +198,7 @@ class Finanzas {
     }
 
     promptUser(){
-        // debugger
+        // 
     let name = JSON.parse(window.localStorage.getItem("name"))
 
         if(!name) {
@@ -227,18 +227,13 @@ class Finanzas {
             date
         }
 
-        // let obj = {month: MONTH_NAMES[new Date(transaction.date).getMonth()], 
-        //     amount: transaction.amount}
-
         if (transactionType === "spending") {
-            debugger
+         
             this.spendingTransactions.push(transaction)
             this.totalSpending += transaction.amount
             
             this.totalSpendingWithInflation += (this.inflationRate += this.totalSpending)
             console.log(this.totalSpendingWithInflation)
-            // obj = {month: MONTH_NAMES[new Date(transaction.date).getMonth()], 
-            //         amount: transaction.amount}
             const dateNumber = new Date(transaction.date).getMonth()
             
             this.data[dateNumber].inflation += this.totalSpendingWithInflation
@@ -246,19 +241,15 @@ class Finanzas {
             console.log(this.data[dateNumber])
             this.largestSpendingAmount += transaction.amount 
 
-            // debugger
+            // 
             console.log(this.data)
 
 
         } else if (transactionType === "revenue"){
             this.revenueTransactions.push(transaction)
             this.totalRevenue += transaction.amount
-            // obj = {month: MONTH_NAMES[new Date(transaction.date).getMonth()], 
-            //         amount: transaction.amount}
-            // this.revenueData.push(obj)
-        
             const dateNumber = new Date(transaction.date).getMonth()
-            // debugger
+            // 
             this.data[dateNumber].revenue += transaction.amount 
             this.largestRevenueAmount += transaction.amount
             console.log(this.largestRevenueAmount)
