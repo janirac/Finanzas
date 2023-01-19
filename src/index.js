@@ -1,3 +1,4 @@
+import {Sortable, Plugins} from '@shopify/draggable';
 import Finanzas from "./scripts/finanzas"; 
 import Calculator from "./scripts/calculator";
 import Graph from "./scripts/graph";
@@ -35,6 +36,7 @@ import {
 const app = new Finanzas()
 const calc = new Calculator()
 const graph = new Graph(app, calc)
+const goals = []
 
 let currentTransactionType = TRANSACTION_TYPES[REVENUE]
 let category = null
@@ -81,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
         //  Set the button text to 'Can you click me?'
         // button.innerText = 'Can you click me?'
 
+    graph.setupSVG()
     document.getElementById('transaction-date').valueAsDate = new Date();
     populateCategorySection()
 })
@@ -144,6 +147,8 @@ const handleClickEvent = (event) => {
 
             app.addTransaction(currentTransactionType, currentAmount, category, frequency, date)
             calc.resetCalculator()
+            graph.upDateGraph()
+            graph.setupSVG()
         break;
     }
 }
@@ -151,28 +156,18 @@ const handleClickEvent = (event) => {
 
 let modal = document.getElementById("instructions-modal");
 
-
-// Get the button that opens the modal
 let btn = document.getElementById("instructions-btn");
 
-
-// Get the <span> element that closes the modal
 let span = document.getElementsByClassName("close")[0];
 
-
-// When the user clicks on the button, open the modal
 btn.onclick = function() {
   modal.style.display = "block";
 }
 
-
-// When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
 }
 
-
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
@@ -180,6 +175,158 @@ window.onclick = function(event) {
 }
 
 
+let goalModal = document.getElementById("edit-goal-modal");
+
+let goalBtn = document.getElementById("edit-goal-btn");
+
+let span2 = document.getElementsByClassName("close")[1];
+
+
+goalBtn.onclick = function() {
+  goalModal.style.display = "block";
+}
+
+span2.onclick = function() {
+  goalModal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == goalModal) {
+    goalModal.style.display = "none";
+  }
+}
+
+
 document.addEventListener("click", handleClickEvent)
 
+const draggables = document.querySelectorAll('.draggable')
+const container = document.querySelectorAll('bottom-calculator-section')
+const container2 = document.querySelectorAll('category-section')
 
+draggables.forEach(draggable => {
+    draggable.addEventListener('dragstart', () => {
+        draggable.classList.add('dragging')
+    })
+
+    draggable.addEventListener('dragend', () => {
+        draggable.classList.remove('dragging')
+    })
+
+    container.forEach(cnt => {
+        container.addEventListener('dragover', (e) => {
+            e.preventDefault()
+            const afterElement = getDragAfterElement(cnt, e.clientY)
+            if (afterElement == null){
+                cnt.appendChild(draggable)
+            } else {
+                cnt.insertBefore(draggable, afterElement)
+            }
+            const draggable = document.querySelector('draggable')
+            cnt.appendChild(draggable)
+        })
+    })
+})
+
+function getDragAfterElement(container, y){
+    const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')]
+    draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect()
+        const offset = y - box.top - box.height / 2
+        if (offset < 0 && offset > closest.offset) {
+            return {offset: offset, element: child}
+        } else {
+            return closest
+        }
+    }, {offset:Number.NEGATIVE_INFINITY}).element
+}
+
+// const data = [
+//     { name: 'John', score: 80 },
+//     { name: 'Simon', score: 95 },
+//     { name: 'Samantha', score: 100 },
+//     { name: 'Patrick', score: 10 },
+//     { name: 'Mary', score: 5 },
+//     { name: 'Christina', score: 75 },
+//     { name: 'Michael', score: 86 },
+//   ];
+
+//   const width = 700;
+//   const height = 450;
+//   const margin = { top: 50, bottom: 50, left: 50, right: 50 };
+  
+//   const svg = d3.select('#graph')
+//     .append('svg')
+//     .attr('width', width - margin.left - margin.right)
+//     .attr('height', height - margin.top - margin.bottom)
+//     .attr("viewBox", [0, 0, width, height]);
+  
+//   const x = d3.scaleBand()
+//     .domain(d3.range(data.length))
+//     .range([margin.left, width - margin.right])
+//     .padding(0.1) 
+  
+//   const y = d3.scaleLinear()
+//     .domain([0, 100])
+//     .range([height - margin.bottom, margin.top])
+  
+//   svg
+//     .append("g")
+//     .attr("fill", 'royalblue')
+//     .selectAll("rect")
+//     .data(data.sort((a, b) => d3.descending(a.score, b.score)))
+//     .enter().append('rect')
+//       .attr("x", (d, i) => x(i))
+//       .attr("y", d => y(d.score))
+//       .attr("height", d => y(0) - y(d.score))
+//       .attr("width", x.bandwidth());
+//       //   console.log(y(0))
+//       //   console.log(y(d.score))
+//       //   console.log(y)
+
+//   function yAxis(g) {
+//     g.attr("transform", `translate(${margin.left}, 0)`)
+//       .call(d3.axisLeft(y).ticks(null, data.format))
+//       .attr("font-size", '20px')
+//   }
+  
+//   function xAxis(g) {
+//     g.attr("transform", `translate(0,${height - margin.bottom})`)
+//       .call(d3.axisBottom(x).tickFormat(i => data[i].name))
+//       .attr("font-size", '20px')
+//   }
+  
+//   svg.append("g").call(xAxis);
+//   svg.append("g").call(yAxis);
+//   svg.node();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let bar = d3.select('svg')
+//           .selectAll('rect')
+//           .data(data)
+//           .enter()
+//           .append('rect')
+//           .attr('height', function(d) {  return d; })
+//           .attr('width', barHeight - 1)
+//           .attr('transform', function(d, i) {
+//             return "translate(0," + i * barHeight + ")";
+//           });
