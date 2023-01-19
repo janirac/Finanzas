@@ -11,65 +11,102 @@ class Graph{
     }
 
     setupSVG(){
-        const data = this.app.getRevenueData()
-        const data2 = this.app.getSpendingData()
+        // const data = this.app.getRevenueData()
+        // const data2 = this.app.getSpendingData()
+        const data = this.app.data
+        console.log(data)
 
-        const width = 700;
-        const height = 450;
-        const margin = { top: 50, bottom: 50, left: 50, right: 50 };
+        const margin = {top: 10, right: 30, bottom: 20, left: 50},
+        width = 460 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
         
         const svg = d3.select('#graph')
             .append('svg')
-            .attr('width', width - margin.left - margin.right)
-            .attr('height', height - margin.top - margin.bottom)
-            .attr("viewBox", [0, 0, width, height]);
+            .attr('width', width + margin.left + margin.right)
+            .attr('height', height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`)
+            // .attr("viewBox", [0, 0, width, height]);
+
+        const subgroups = data.columns.slice(1)
+        const groups =  data.map(d => (d.month))
+
+        console.log(subgroups)
+        console.log("after subgroups")
+        console.log(groups)
+        console.log("before subs after groups")
         
         const x = d3.scaleBand()
-            .domain(d3.range(12))
-            .range([margin.left, width - margin.right])
-            .padding(0.1) 
+            .domain(groups)
+            .range([0, width])
+            .padding([0.2]) 
+            // svg.append("g")
+            // .attr("transform",
+            // "translate(" + margin.left + "," + margin.top + ")")
+            // .call(d3.axisBottom(x).tickSizeOuter(0));
+            svg.append("g")
+            .attr("transform", `translate(0, ${height})`)
+            .call(d3.axisBottom(x).tickSizeOuter(0));
         
+            const test = this.app.getLargestNumber()
+
         const y = d3.scaleLinear()
-            .domain([0, this.app.largestRevenueAmount + 100])
-            .range([height - margin.bottom, margin.top])
-    
+            .domain([0,  test + 100])
+            .range([height,0])
+            svg.append("g")
+            .call(d3.axisLeft(y));
+
+
+        const color = d3.scaleOrdinal()
+            .domain(subgroups)
+            .range(['#A020F0','#301934','#CBC3E3'])
+
+        const stackedData = d3.stack()
+            .keys(subgroups)
+            (data)
+
+            console.log(stackedData)
+
         const barchart = svg
             .append("g")
-            .attr("fill", 'purple')
+            .selectAll("g")
+            .data(stackedData)
+            .enter().append('g')
+            .attr("fill", function(d) {return color(d.key)})
             .selectAll("rect")
-            .data(data.sort())
+            .data(d => d)
             .enter().append('rect')
-            .attr("x", (d, i) => x(i))
-            .attr("y", d => y(d.amount))
-            .attr("height", d => y(0) - y(d.amount))
-            .attr("width", x.bandwidth())
-            .append("g")
-            .attr("fill", 'yellow')
-            .selectAll("rect")
-            .data(data2.sort((a, b) => d3.descending(a.amount, b.amount)))
-            .enter().append('rect')
-            .attr("x", (d, i) => x(i))
-            .attr("y", d => y(d.amount))
-            .attr("height", d => y(0) - y(d.amount))
-            .attr("width", x.bandwidth() + 5);
+            .attr("x", d => x(d.data.month))
+            .attr("y", d => y(d[1]))
+            .attr("height", d => y(d[0]) - y(d[1]))
+            .attr("width",x.bandwidth())
 
 
-        function yAxis(g) {
-            g.attr("transform", `translate(${margin.left}, 0)`)
-            .call(d3.axisLeft(y).ticks(null, data.format))
-            .attr("font-size", '14px')
-            .attr("color", "purple")
-        }
+            // .selectAll("rect")
+            // .data(data2.sort((a, b) => d3.descending(a.amount, b.amount)))
+            // .enter().append('rect')
+            // .attr("x", (d, i) => x(i))
+            // .attr("y", d => y(d.amount))
+            // .attr("height", d => y(0) - y(d.amount))
+            // .attr("width", x.bandwidth() + 5);
+
+
+        // function yAxis(g) {
+        //     g.attr("transform", `translate(${margin.left}, 0)`)
+        //     .call(d3.axisLeft(y).ticks(null, data.format))
+        //     .attr("font-size", '14px')
+        //     .attr("color", "purple")
+        // }
         
-        function xAxis(g) {
-            g.attr("transform", `translate(0,${height - margin.bottom})`)
-            .call(d3.axisBottom(x).tickFormat(i => data[i].month))
-            .attr("font-size", '10px')
-            .attr("color", "purple")
-        }
+        // function xAxis(g) {
+        //     g.attr("transform", `translate(0,${height - margin.bottom})`)
+        //     .call(d3.axisBottom(x).tickFormat(i => data[i].month))
+        //     .attr("font-size", '10px')
+        //     .attr("color", "purple")
+        // }
         
-        svg.append("g").call(xAxis);
-        svg.append("g").call(yAxis);
+        // svg.append("g").call(xAxis);
+        // svg.append("g").call(yAxis);
         svg.node();
 
     }

@@ -3,14 +3,79 @@ import { MONTH_NAMES } from "./utils/constants"
 class Finanzas {
     constructor(inflationRate){
         this.name = " "
+        this.largestScale = 0
         this.revenueTransactions = []
         this.spendingTransactions = []
         this.totalSpending = 0
         this.totalRevenue = 0
         this.totalSpendingWithInflation = 0
         this.largestSpendingAmount = 0
+        this.largestRevenueAmount = 0
         this.inflationRate = inflationRate
-        this.spendingData = [{month: MONTH_NAMES[new Date().getMonth()], 
+        this.data = [   
+            {month: MONTH_NAMES[new Date().getMonth()], 
+                revenue: this.largestRevenueAmount, 
+                spending: this.largestSpendingAmount, 
+                inflation: this.totalSpendingWithInflation},
+
+            {month: MONTH_NAMES[new Date().getMonth() + 1], 
+                revenue: this.largestRevenueAmount, 
+                spending: this.largestSpendingAmount, 
+                inflation: this.totalSpendingWithInflation},
+
+            {month: MONTH_NAMES[new Date().getMonth() + 2], 
+                revenue: this.largestRevenueAmount, 
+                spending: this.largestSpendingAmount, 
+                inflation: this.totalSpendingWithInflation},
+
+            {month: MONTH_NAMES[new Date().getMonth() + 3], 
+                revenue: this.largestRevenueAmount, 
+                spending: this.largestSpendingAmount, 
+                inflation: this.totalSpendingWithInflation},
+
+            {month: MONTH_NAMES[new Date().getMonth() + 4], 
+                revenue: this.largestRevenueAmount, 
+                spending: this.largestSpendingAmount, 
+                inflation: this.totalSpendingWithInflation},
+
+            {month: MONTH_NAMES[new Date().getMonth() + 5], 
+                revenue: this.largestRevenueAmount, 
+                spending: this.largestSpendingAmount, 
+                inflation: this.totalSpendingWithInflation},
+
+            {month: MONTH_NAMES[new Date().getMonth() + 6], 
+                revenue: this.largestRevenueAmount, 
+                spending: this.largestSpendingAmount, 
+                inflation: this.totalSpendingWithInflation},
+
+            {month: MONTH_NAMES[new Date().getMonth() + 7], 
+                revenue: this.largestRevenueAmount, 
+                spending: this.largestSpendingAmount, 
+                inflation: this.totalSpendingWithInflation},
+
+            {month: MONTH_NAMES[new Date().getMonth() + 8], 
+                revenue: this.largestRevenueAmount, 
+                spending: this.largestSpendingAmount, 
+                inflation: this.totalSpendingWithInflation},
+
+            {month: MONTH_NAMES[new Date().getMonth() + 9], 
+                revenue: this.largestRevenueAmount, 
+                spending: this.largestSpendingAmount, 
+                inflation: this.totalSpendingWithInflation},
+
+            {month: MONTH_NAMES[new Date().getMonth() + 10], 
+                revenue: this.largestRevenueAmount, 
+                spending: this.largestSpendingAmount, 
+                inflation: this.totalSpendingWithInflation},
+
+            {month: MONTH_NAMES[new Date().getMonth() + 11], 
+                revenue: this.largestRevenueAmount, 
+                spending: this.largestSpendingAmount, 
+                inflation: this.totalSpendingWithInflation}
+                        ]
+            this.data.columns = ["month", "revenue", "spending", "inflation"]
+
+            this.spendingData = [{month: MONTH_NAMES[new Date().getMonth()], 
             amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
             {month: MONTH_NAMES[new Date().getMonth() + 1], 
@@ -46,8 +111,6 @@ class Finanzas {
             {month: MONTH_NAMES[new Date().getMonth() + 11], 
             amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation}
                         ]
-            this.spendingData.columns = ["month", "amount", "inflation"]
-        this.largestRevenueAmount = 0
         this.revenueData = [
             {month: MONTH_NAMES[new Date().getMonth()], 
             amount: this.largestRevenueAmount},
@@ -87,6 +150,21 @@ class Finanzas {
                         ]
     }
 
+    findLargestNumber(){
+        // debugger
+        this.largestScale = [
+            this.totalSpendingWithInflation,
+            this.largestSpendingAmount,
+            this.largestRevenueAmount
+        ].reduce((partialSum, a) => partialSum + a, 0)
+
+
+    }
+
+    getLargestNumber(){
+        return this.largestScale
+    }
+
     static async getInflationRate () {
         const response = await fetch('https://api.api-ninjas.com/v1/inflation?country=United States', {
             headers: {
@@ -106,8 +184,12 @@ class Finanzas {
         return this.spendingData
     }
 
-    getRevenueData(){
-        return this.revenueData
+    // getSpendingData(){
+    //     return this.spendingData
+    // }
+
+    getData(){
+        return this.data
     }
 
     start(){
@@ -116,7 +198,7 @@ class Finanzas {
     }
 
     promptUser(){
-        debugger
+        // debugger
     let name = JSON.parse(window.localStorage.getItem("name"))
 
         if(!name) {
@@ -149,21 +231,23 @@ class Finanzas {
         //     amount: transaction.amount}
 
         if (transactionType === "spending") {
-            // debugger
+            debugger
             this.spendingTransactions.push(transaction)
             this.totalSpending += transaction.amount
-            this.totalSpendingWithInflation = this.inflationRate += this.totalSpending
+            
+            this.totalSpendingWithInflation += (this.inflationRate += this.totalSpending)
             console.log(this.totalSpendingWithInflation)
             // obj = {month: MONTH_NAMES[new Date(transaction.date).getMonth()], 
             //         amount: transaction.amount}
             const dateNumber = new Date(transaction.date).getMonth()
-
-            this.spendingData[dateNumber].amount += transaction.amount
-            console.log(this.spendingData[dateNumber])
+            
+            this.data[dateNumber].inflation += this.totalSpendingWithInflation
+            this.data[dateNumber].spending += transaction.amount
+            console.log(this.data[dateNumber])
             this.largestSpendingAmount += transaction.amount 
 
             // debugger
-            console.log(this.spendingData)
+            console.log(this.data)
 
 
         } else if (transactionType === "revenue"){
@@ -175,13 +259,14 @@ class Finanzas {
         
             const dateNumber = new Date(transaction.date).getMonth()
             // debugger
-            this.revenueData[dateNumber].amount += transaction.amount 
+            this.data[dateNumber].revenue += transaction.amount 
             this.largestRevenueAmount += transaction.amount
             console.log(this.largestRevenueAmount)
-            console.log(this.revenueData)
+            console.log(this.data)
             
         }
-
+        
+        this.findLargestNumber()
         this.showTransactions()
     }
 
