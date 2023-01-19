@@ -11,41 +11,42 @@ class Finanzas {
         this.largestSpendingAmount = 0
         this.inflationRate = inflationRate
         this.spendingData = [{month: MONTH_NAMES[new Date().getMonth()], 
-            amount: this.largestSpendingAmount},
+            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
             {month: MONTH_NAMES[new Date().getMonth() + 1], 
-            amount: this.largestSpendingAmount},
+            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
             {month: MONTH_NAMES[new Date().getMonth() + 2], 
-            amount: this.largestSpendingAmount},
+            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
             {month: MONTH_NAMES[new Date().getMonth() + 3], 
-            amount: this.largestSpendingAmount},
+            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
             {month: MONTH_NAMES[new Date().getMonth() + 4], 
-            amount: this.largestSpendingAmount},
+            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
             {month: MONTH_NAMES[new Date().getMonth() + 5], 
-            amount: this.largestSpendingAmount},
+            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
             {month: MONTH_NAMES[new Date().getMonth() + 6], 
-            amount: this.largestSpendingAmount},
+            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
             {month: MONTH_NAMES[new Date().getMonth() + 7], 
-            amount: this.largestSpendingAmount},
+            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
             {month: MONTH_NAMES[new Date().getMonth() + 8], 
-            amount: this.largestSpendingAmount},
+            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
             {month: MONTH_NAMES[new Date().getMonth() + 9], 
-            amount: this.largestSpendingAmount},
+            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
             {month: MONTH_NAMES[new Date().getMonth() + 10], 
-            amount: this.largestSpendingAmount},
+            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
             {month: MONTH_NAMES[new Date().getMonth() + 11], 
-            amount: this.largestSpendingAmount}
+            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation}
                         ]
+            this.spendingData.columns = ["month", "amount", "inflation"]
         this.largestRevenueAmount = 0
         this.revenueData = [
             {month: MONTH_NAMES[new Date().getMonth()], 
