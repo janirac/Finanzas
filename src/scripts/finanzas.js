@@ -1,15 +1,15 @@
 import { MONTH_NAMES } from "./utils/constants"
 
 class Finanzas {
-    constructor(){
-        this.name = ""
+    constructor(inflationRate){
+        this.name = " "
         this.revenueTransactions = []
         this.spendingTransactions = []
         this.totalSpending = 0
         this.totalRevenue = 0
         this.totalSpendingWithInflation = 0
         this.largestSpendingAmount = 0
-        this.inflationRate = 0
+        this.inflationRate = inflationRate
         this.spendingData = [{month: MONTH_NAMES[new Date().getMonth()], 
             amount: this.largestSpendingAmount},
 
@@ -86,7 +86,7 @@ class Finanzas {
                         ]
     }
 
-    async getInflationRate () {
+    static async getInflationRate () {
         const response = await fetch('https://api.api-ninjas.com/v1/inflation?country=United States', {
             headers: {
                 'X-Api-Key': '8oQ4SzIZyP5xcTIAQwS4Cw==Ah6NdarSzjvzEZNm',
@@ -96,9 +96,9 @@ class Finanzas {
 
         const data = await response.json()
         console.log(data);
-        this.inflationRate = data[0].monthly_rate_pct
-        console.log(this.inflationRate)
-        return data;
+        const inflationRate = data[0].monthly_rate_pct
+        console.log(inflationRate)
+        return inflationRate;
     }
 
     getSpendingData(){
@@ -115,8 +115,17 @@ class Finanzas {
     }
 
     promptUser(){
-        let name = prompt("Please Enter Your Name", "Janira Crispin");
-        this.name = name;
+        debugger
+    let name = JSON.parse(window.localStorage.getItem("name"))
+
+        if(!name) {
+            name = prompt("Please Enter Your Name", "Janira Crispin");
+            localStorage.setItem("name", JSON.stringify(name))
+            console.log("name saved")
+            this.name = name;
+        } else {
+            this.name = name
+        }
     }
 
     updateTitle(){

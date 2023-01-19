@@ -33,10 +33,10 @@ import {
 
 // import "./styles/main.scss";
 
-const app = new Finanzas()
-const calc = new Calculator()
-const graph = new Graph(app, calc)
-const goals = []
+let app; // new Finanzas()
+let calc;
+let graph;
+let goals = []
 
 let currentTransactionType = TRANSACTION_TYPES[REVENUE]
 let category = null
@@ -71,19 +71,31 @@ const currentClickedCategoryButton = () => {
 
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     // 1. find out how to write to the browser local storage or cookie
     // 2. Check the browser local storage for the finanza app configuration file.
     // 3. if there is a configuration file then pass it as a parameter to the app
 
-    // app.start()
+   
         //  Create a button element
         // const button = document.createElement('button')
 
         //  Set the button text to 'Can you click me?'
         // button.innerText = 'Can you click me?'
-        // const inflationData =  app.getInflationRate();
-        // console.log(inflationData)
+
+    let inflationRate = JSON.parse(window.localStorage.getItem("inflationRate"))
+
+    if(!inflationRate) {
+        inflationRate = await Finanzas.getInflationRate()
+        localStorage.setItem("inflationRate", JSON.stringify(inflationRate))
+        console.log("inflation saved")
+    }
+
+    app = new Finanzas(inflationRate)
+    calc = new Calculator()
+    graph = new Graph(app, calc)
+
+    app.start()
     graph.setupSVG()
     document.getElementById('transaction-date').valueAsDate = new Date();
     populateCategorySection()
@@ -153,7 +165,6 @@ const handleClickEvent = (event) => {
         break;
     }
 }
-// calc.selectedKeysAmount()
 
 let modal = document.getElementById("instructions-modal");
 
