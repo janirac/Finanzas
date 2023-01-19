@@ -58,7 +58,6 @@ Finanzas will be implemented using the collection of the following technologies:
 - Improve on any design layout 
 - Make sure functionality is working
 ## Licenses
-- Bar Graph Visual Inspo: https://d3-graph-gallery.com/graph/barplot_stacked_basicWide.html
 - Draggable Ref: https://github.com/Shopify/draggable/blob/master/examples/src/content/Sortable/MultipleContainers/MultipleContainers.scss
 
 
