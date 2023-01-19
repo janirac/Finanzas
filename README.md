@@ -28,11 +28,12 @@ Finanzas will be implemented using the collection of the following technologies:
 - HTML
 
 ### Core Libraries
-- Rechart ~ Charting
+- D3
 - Draggable ~ Make JS objects dragging and animated 
 
 ### APIs
 - Inflation API ~ giving monthly and yearly inflation rates for a subset of countries
+
 
 ## Implementation Timeline
 ### Friday Afternoon & Weekend
@@ -59,6 +60,7 @@ Finanzas will be implemented using the collection of the following technologies:
 - Make sure functionality is working
 ## Licenses
 - Draggable Ref: https://github.com/Shopify/draggable/blob/master/examples/src/content/Sortable/MultipleContainers/MultipleContainers.scss
+
 
 
 
