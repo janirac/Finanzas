@@ -82,7 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //  Set the button text to 'Can you click me?'
         // button.innerText = 'Can you click me?'
-
+        // const inflationData =  app.getInflationRate();
+        // console.log(inflationData)
     graph.setupSVG()
     document.getElementById('transaction-date').valueAsDate = new Date();
     populateCategorySection()

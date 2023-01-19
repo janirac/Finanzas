@@ -37,7 +37,7 @@ class Graph{
             .append("g")
             .attr("fill", 'purple')
             .selectAll("rect")
-            .data(data.sort((a, b) => d3.descending(a.amount, b.amount)))
+            .data(data.sort())
             .enter().append('rect')
             .attr("x", (d, i) => x(i))
             .attr("y", d => y(d.amount))

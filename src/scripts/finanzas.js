@@ -9,6 +9,7 @@ class Finanzas {
         this.totalRevenue = 0
         this.totalSpendingWithInflation = 0
         this.largestSpendingAmount = 0
+        this.inflationRate = 0
         this.spendingData = [{month: MONTH_NAMES[new Date().getMonth()], 
             amount: this.largestSpendingAmount},
 
@@ -85,6 +86,21 @@ class Finanzas {
                         ]
     }
 
+    async getInflationRate () {
+        const response = await fetch('https://api.api-ninjas.com/v1/inflation?country=United States', {
+            headers: {
+                'X-Api-Key': '8oQ4SzIZyP5xcTIAQwS4Cw==Ah6NdarSzjvzEZNm',
+                'Content-Type': 'application/json'
+            }
+        })
+
+        const data = await response.json()
+        console.log(data);
+        this.inflationRate = data[0].monthly_rate_pct
+        console.log(this.inflationRate)
+        return data;
+    }
+
     getSpendingData(){
         return this.spendingData
     }
@@ -126,7 +142,8 @@ class Finanzas {
             // debugger
             this.spendingTransactions.push(transaction)
             this.totalSpending += transaction.amount
-            this.totalSpendingWithInflation += this.totalSpending
+            this.totalSpendingWithInflation = this.inflationRate += this.totalSpending
+            console.log(this.totalSpendingWithInflation)
             // obj = {month: MONTH_NAMES[new Date(transaction.date).getMonth()], 
             //         amount: transaction.amount}
             const dateNumber = new Date(transaction.date).getMonth()
