@@ -12,142 +12,160 @@ class Finanzas {
         this.largestSpendingAmount = 0
         this.largestRevenueAmount = 0
         this.inflationRate = inflationRate
-        this.data = [   
-            {month: MONTH_NAMES[new Date().getMonth()], 
-                revenue: this.largestRevenueAmount, 
-                spending: this.largestSpendingAmount, 
-                inflation: this.totalSpendingWithInflation},
+        // this.data = [   
+        //     {month: MONTH_NAMES[new Date().getMonth()], 
+        //         revenue: this.largestRevenueAmount, 
+        //         spending: this.largestSpendingAmount, 
+        //         inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 1], 
-                revenue: this.largestRevenueAmount, 
-                spending: this.largestSpendingAmount, 
-                inflation: this.totalSpendingWithInflation},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 1], 
+        //         revenue: this.largestRevenueAmount, 
+        //         spending: this.largestSpendingAmount, 
+        //         inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 2], 
-                revenue: this.largestRevenueAmount, 
-                spending: this.largestSpendingAmount, 
-                inflation: this.totalSpendingWithInflation},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 2], 
+        //         revenue: this.largestRevenueAmount, 
+        //         spending: this.largestSpendingAmount, 
+        //         inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 3], 
-                revenue: this.largestRevenueAmount, 
-                spending: this.largestSpendingAmount, 
-                inflation: this.totalSpendingWithInflation},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 3], 
+        //         revenue: this.largestRevenueAmount, 
+        //         spending: this.largestSpendingAmount, 
+        //         inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 4], 
-                revenue: this.largestRevenueAmount, 
-                spending: this.largestSpendingAmount, 
-                inflation: this.totalSpendingWithInflation},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 4], 
+        //         revenue: this.largestRevenueAmount, 
+        //         spending: this.largestSpendingAmount, 
+        //         inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 5], 
-                revenue: this.largestRevenueAmount, 
-                spending: this.largestSpendingAmount, 
-                inflation: this.totalSpendingWithInflation},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 5], 
+        //         revenue: this.largestRevenueAmount, 
+        //         spending: this.largestSpendingAmount, 
+        //         inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 6], 
-                revenue: this.largestRevenueAmount, 
-                spending: this.largestSpendingAmount, 
-                inflation: this.totalSpendingWithInflation},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 6], 
+        //         revenue: this.largestRevenueAmount, 
+        //         spending: this.largestSpendingAmount, 
+        //         inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 7], 
-                revenue: this.largestRevenueAmount, 
-                spending: this.largestSpendingAmount, 
-                inflation: this.totalSpendingWithInflation},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 7], 
+        //         revenue: this.largestRevenueAmount, 
+        //         spending: this.largestSpendingAmount, 
+        //         inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 8], 
-                revenue: this.largestRevenueAmount, 
-                spending: this.largestSpendingAmount, 
-                inflation: this.totalSpendingWithInflation},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 8], 
+        //         revenue: this.largestRevenueAmount, 
+        //         spending: this.largestSpendingAmount, 
+        //         inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 9], 
-                revenue: this.largestRevenueAmount, 
-                spending: this.largestSpendingAmount, 
-                inflation: this.totalSpendingWithInflation},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 9], 
+        //         revenue: this.largestRevenueAmount, 
+        //         spending: this.largestSpendingAmount, 
+        //         inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 10], 
-                revenue: this.largestRevenueAmount, 
-                spending: this.largestSpendingAmount, 
-                inflation: this.totalSpendingWithInflation},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 10], 
+        //         revenue: this.largestRevenueAmount, 
+        //         spending: this.largestSpendingAmount, 
+        //         inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 11], 
-                revenue: this.largestRevenueAmount, 
-                spending: this.largestSpendingAmount, 
-                inflation: this.totalSpendingWithInflation}
-                        ]
-            this.data.columns = ["month", "revenue", "spending", "inflation"]
+        //     {month: MONTH_NAMES[new Date().getMonth() + 11], 
+        //         revenue: this.largestRevenueAmount, 
+        //         spending: this.largestSpendingAmount, 
+        //         inflation: this.totalSpendingWithInflation}
+        //     ]
+        //     this.data.columns = ["month", "revenue", "spending", "inflation"]
 
-            this.spendingData = [{month: MONTH_NAMES[new Date().getMonth()], 
-            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
+        const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-            {month: MONTH_NAMES[new Date().getMonth() + 1], 
-            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
+        this.data = [];
+        
+        for (let i = 0; i < 12; i++) {
+            const monthIndex = (new Date().getMonth() + i) % 12; // use modulo to wrap around to January if necessary
+            const monthAbbreviation = MONTH_NAMES[monthIndex].slice(0, 3);
+            const monthObject = {
+                month: monthAbbreviation,
+                revenue: this.largestRevenueAmount,
+                spending: this.largestSpendingAmount,
+                inflation: this.totalSpendingWithInflation
+            };
+            this.data.push(monthObject);
+        }   
 
-            {month: MONTH_NAMES[new Date().getMonth() + 2], 
-            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
+        this.data.columns = ['month', 'revenue', 'spending', 'inflation'];
 
-            {month: MONTH_NAMES[new Date().getMonth() + 3], 
-            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
+        //     this.spendingData = [{month: MONTH_NAMES[new Date().getMonth()], 
+        //     amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 4], 
-            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 1], 
+        //     amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 5], 
-            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 2], 
+        //     amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 6], 
-            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 3], 
+        //     amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 7], 
-            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 4], 
+        //     amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 8], 
-            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 5], 
+        //     amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 9], 
-            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 6], 
+        //     amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 10], 
-            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 7], 
+        //     amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 11], 
-            amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation}
-                        ]
-        this.revenueData = [
-            {month: MONTH_NAMES[new Date().getMonth()], 
-            amount: this.largestRevenueAmount},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 8], 
+        //     amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 1], 
-            amount: this.largestRevenueAmount},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 9], 
+        //     amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 2], 
-            amount: this.largestRevenueAmount},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 10], 
+        //     amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 3], 
-            amount: this.largestRevenueAmount},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 11], 
+        //     amount: this.largestSpendingAmount, inflation: this.totalSpendingWithInflation}
+        //     ]
+        // this.revenueData = [
+        //     {month: MONTH_NAMES[new Date().getMonth()], 
+        //     amount: this.largestRevenueAmount},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 4], 
-            amount: this.largestRevenueAmount},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 1], 
+        //     amount: this.largestRevenueAmount},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 5], 
-            amount: this.largestRevenueAmount},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 2], 
+        //     amount: this.largestRevenueAmount},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 6], 
-            amount: this.largestRevenueAmount},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 3], 
+        //     amount: this.largestRevenueAmount},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 7], 
-            amount: this.largestRevenueAmount},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 4], 
+        //     amount: this.largestRevenueAmount},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 8], 
-            amount: this.largestRevenueAmount},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 5], 
+        //     amount: this.largestRevenueAmount},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 9], 
-            amount: this.largestRevenueAmount},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 6], 
+        //     amount: this.largestRevenueAmount},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 10], 
-            amount: this.largestRevenueAmount},
+        //     {month: MONTH_NAMES[new Date().getMonth() + 7], 
+        //     amount: this.largestRevenueAmount},
 
-            {month: MONTH_NAMES[new Date().getMonth() + 11], 
-            amount: this.largestRevenueAmount}
-                        ]
+        //     {month: MONTH_NAMES[new Date().getMonth() + 8], 
+        //     amount: this.largestRevenueAmount},
+
+        //     {month: MONTH_NAMES[new Date().getMonth() + 9], 
+        //     amount: this.largestRevenueAmount},
+
+        //     {month: MONTH_NAMES[new Date().getMonth() + 10], 
+        //     amount: this.largestRevenueAmount},
+
+        //     {month: MONTH_NAMES[new Date().getMonth() + 11], 
+        //     amount: this.largestRevenueAmount}
+        // ]
     }
 
     findLargestNumber(){
@@ -157,8 +175,6 @@ class Finanzas {
             this.largestSpendingAmount,
             this.largestRevenueAmount
         ].reduce((partialSum, a) => partialSum + a, 0)
-
-
     }
 
     getLargestNumber(){
@@ -219,6 +235,7 @@ class Finanzas {
     }
 
     addTransaction(transactionType, amount, category, frequency, date){
+        debugger
         const transaction = {
             transactionType,
             amount,
@@ -232,29 +249,34 @@ class Finanzas {
             this.spendingTransactions.push(transaction)
             this.totalSpending += transaction.amount
             
-            this.totalSpendingWithInflation += (this.inflationRate += this.totalSpending)
+            this.totalSpendingWithInflation += this.totalSpending * this.inflationRate;
             console.log(this.totalSpendingWithInflation)
-            const dateNumber = new Date(transaction.date).getMonth()
+            const dateMonthName = new Date(transaction.date).toLocaleString("en-US", {month: "short"})
+
+            this.data.forEach((key, index) => {
+                const currMonth = key.month
+                if(currMonth === dateMonthName) {
+                    this.data[index].spending += transaction.amount
+                    this.data[index].inflation += this.totalSpendingWithInflation
+                }
+            })
             
-            this.data[dateNumber].inflation += this.totalSpendingWithInflation
-            this.data[dateNumber].spending += transaction.amount
-            console.log(this.data[dateNumber])
             this.largestSpendingAmount += transaction.amount 
-
-            // 
-            console.log(this.data)
-
 
         } else if (transactionType === "revenue"){
             this.revenueTransactions.push(transaction)
             this.totalRevenue += transaction.amount
-            const dateNumber = new Date(transaction.date).getMonth()
-            // 
-            this.data[dateNumber].revenue += transaction.amount 
+            const dateMonthName = new Date(transaction.date).toLocaleString("en-US", {month: "short"})
+            this.data.forEach((key, index) => {
+                const currMonth = key.month
+                if(currMonth === dateMonthName) {
+                    this.data[index].revenue += transaction.amount 
+                }
+            })
+            
             this.largestRevenueAmount += transaction.amount
             console.log(this.largestRevenueAmount)
             console.log(this.data)
-            
         }
         
         this.findLargestNumber()

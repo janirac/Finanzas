@@ -14,11 +14,13 @@ class Graph{
         // const data = this.app.getRevenueData()
         // const data2 = this.app.getSpendingData()
         const data = this.app.data
+        console.log(this.app)
+        console.log("here")
         console.log(data)
 
-        const margin = {top: 10, right: 30, bottom: 20, left: 50},
-        width = 460 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
+        const margin = {top: 10, right: 30, bottom: 25, left: 50},
+        width = 460,
+        height = 400
         
         const svg = d3.select('#graph')
             .append('svg')
@@ -26,32 +28,33 @@ class Graph{
             .attr('height', height + margin.top + margin.bottom)
             .append("g")
             .attr("transform", `translate(${margin.left},${margin.top})`)
-            // .attr("viewBox", [0, 0, width, height]);
 
         const subgroups = data.columns.slice(1)
-        const groups =  data.map(d => (d.month))
+        const months =  data.map(d => (d.month))
+        console.log(data)
+        console.log("after data")
 
         console.log(subgroups)
         console.log("after subgroups")
-        console.log(groups)
-        console.log("before subs after groups")
+        console.log(months)
+        // console.log("before subs after groups")
         
         const x = d3.scaleBand()
-            .domain(groups)
+            .domain(months)
             .range([0, width])
             .padding([0.2]) 
-            // svg.append("g")
-            // .attr("transform",
-            // "translate(" + margin.left + "," + margin.top + ")")
-            // .call(d3.axisBottom(x).tickSizeOuter(0));
             svg.append("g")
             .attr("transform", `translate(0, ${height})`)
-            .call(d3.axisBottom(x).tickSizeOuter(0));
+            .call(d3.axisBottom(x).tickSizeOuter(0))
+            .selectAll("text")
+            .style("text-anchor", "end")
+            .style("font-weight", 800)
+            .attr("transform", "rotate(-40)"); // rotate labels 45 degrees
         
-            const test = this.app.getLargestNumber()
+        const largestNum = this.app.getLargestNumber()
 
         const y = d3.scaleLinear()
-            .domain([0,  test + 100])
+            .domain([0,  largestNum + 100])
             .range([height,0])
             svg.append("g")
             .call(d3.axisLeft(y));
@@ -65,7 +68,7 @@ class Graph{
             .keys(subgroups)
             (data)
 
-            console.log(stackedData)
+        // console.log(stackedData)
 
         const barchart = svg
             .append("g")
@@ -80,7 +83,6 @@ class Graph{
             .attr("y", d => y(d[1]))
             .attr("height", d => y(d[0]) - y(d[1]))
             .attr("width",x.bandwidth())
-
         svg.node();
 
     }
