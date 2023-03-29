@@ -295,7 +295,17 @@ body .slider.round:before {
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 30%; /* Could be more or less, depending on screen size */
+  width: 40%; /* Could be more or less, depending on screen size */
+}
+
+.modal-info-text {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-size: 20px;
+  color: purple;
+  align-content: center;
+  align-items: center;
 }
 
 /* The Close Button */
