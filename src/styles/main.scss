@@ -112,7 +112,7 @@ body {
   .inflation-switch {
     position: relative;
     display: inline-block;
-    width: 60px;
+    width: 128px;
     height: 34px;
   }
 
@@ -120,6 +120,10 @@ body {
     opacity: 0;
     width: 0;
     height: 0;
+  }
+
+  .checkbox {
+    position: fixed;
   }
 
   .switch {
@@ -168,6 +172,15 @@ body {
   .slider.round:before {
     border-radius: 100%;
   }
+}
+
+.inflation-text {
+  position: absolute;
+  z-index: 10;
+  color: purple;
+  font-size: 17px;
+  font-weight: 600;
+  left: 19px;
 }
 
 

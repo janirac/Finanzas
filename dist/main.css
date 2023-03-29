@@ -150,13 +150,16 @@ body .middle-section .category-section, body .middle-section .calculator-section
 body .inflation-switch {
   position: relative;
   display: inline-block;
-  width: 60px;
+  width: 128px;
   height: 34px;
 }
 body .inflation-switch input {
   opacity: 0;
   width: 0;
   height: 0;
+}
+body .checkbox {
+  position: fixed;
 }
 body .switch {
   display: flex;
@@ -196,6 +199,15 @@ body .slider.round {
 }
 body .slider.round:before {
   border-radius: 100%;
+}
+
+.inflation-text {
+  position: absolute;
+  z-index: 10;
+  color: purple;
+  font-size: 17px;
+  font-weight: 600;
+  left: 19px;
 }
 
 .main-header {
