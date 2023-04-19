@@ -26,6 +26,12 @@
             </div>
           </div>
         </div>
+      <a href="https://github.com/janirac/Finanzas" target="_blank">
+        <img class="github-img" src="./images/personalLinks/GitHub-Mark.jpg"/>
+      </a>
+      <a href="https://www.linkedin.com/in/janira-crispin-396656a9/" target="_blank">
+        <img class="github-img" src="./images/personalLinks/LinkedIn_logo_initials.jpg"/>
+      </a>
     </div>
     <div class="main-header">
       <h1 id="main-header">Finanzas</h1>
@@ -41,7 +47,9 @@
             </button>
         </nav>
         <div class="middle-section">
-          <div class="category-section" id="container" draggable="true"></div>
+          <div class="category-section" id="container">
+            <!-- <div class="category-transaction">$ Income - Date Here - $800</div> -->
+          </div>
           <div class="calculator-section">
             <div class="top-section">
               <div>
@@ -49,12 +57,12 @@
               </div>
               <div class="frequency-section"> 
                 <select id="frequency-select">
-                  <option value="monthly">monthly</option>
+                  <!-- <option value="monthly">monthly</option>
                   <option value="bi-weekly">bi-weekly</option>
                   <option value="bi-monthly">bi-monthly</option>
                   <option value="weekly">weekly</option>
                   <option value="daily">daily</option>
-                  <option value="yearly">yearly</option>
+                  <option value="yearly">yearly</option> -->
                   <option value="one-time">onetime</option>
                 </select>
               </div>
@@ -113,7 +121,7 @@
             d3.select('h3').style('justify-content', 'space-around')
           </script>
         </div> 
-        <div class="bottom-graph-section"> 
+        <!-- <div class="bottom-graph-section"> 
           <div class="note"> Finanzas Goals
             <button id="edit-goal-btn"> Edit Goal</button>
             <div id="edit-goal-modal" class="edit-goal-modal">
@@ -131,7 +139,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </main>
     <script src="./dist/main.js"></script> 
   </body>

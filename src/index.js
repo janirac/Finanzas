@@ -1,4 +1,3 @@
-import {Sortable, Plugins} from '@shopify/draggable';
 import Finanzas from "./scripts/finanzas"; 
 import Calculator from "./scripts/calculator";
 import Graph from "./scripts/graph";
@@ -23,15 +22,9 @@ import {
     TRANSACTION_TYPES,
     INCOME_CATEGORIES_HTML,
     SPENDING_CATEGORIES_HTML,
-    INCOME,
-    CAR_INSURANCE,
-    GROCERIES,
-    CREDIT_CARD,
-    UTILITIES,
-    ACTIVITIES
+    SPENDING_CATEGORIES_EMOJIS,
+    INCOME_CATEGORIES_EMOJIS
 } from "./scripts/utils/constants";
-
-// import "./styles/main.scss";
 
 let app; // new Finanzas()
 let calc;
@@ -42,6 +35,18 @@ let currentTransactionType = TRANSACTION_TYPES[REVENUE]
 let category = null
 let frequency = 0
 let date = ""
+
+const currentClickedCategoryButton = (element, categoryType) => {
+    console.log(categoryType)
+    category = categoryType
+    let selectedCats = document.getElementsByClassName("selected-category-button")
+    // selectedCats.forEach((element) => {
+        // })
+    if (selectedCats.length > 0) {
+        selectedCats[0].classList.remove("selected-category-button")
+    }
+    element.classList.add("selected-category-button")
+}
 
 const populateCategorySection = () => {
     document.getElementById("bottom-calc-section").innerHTML = " "
@@ -54,6 +59,7 @@ const populateCategorySection = () => {
     
             btn.innerText = `${button.emoji} ${button.categoryText}`
             document.getElementById("bottom-calc-section").appendChild(btn)
+            btn.addEventListener("click", () => currentClickedCategoryButton(btn, button.id));
         });
     } else if(currentTransactionType === TRANSACTION_TYPES[SPENDING]) {
         Object.values(SPENDING_CATEGORIES_HTML).forEach(button => {
@@ -63,12 +69,10 @@ const populateCategorySection = () => {
     
             btn.innerText = `${button.emoji} ${button.categoryText}`
             document.getElementById("bottom-calc-section").appendChild(btn)
+            btn.addEventListener("click", () => currentClickedCategoryButton(btn, button.id));
+
         });
     }
-}
-
-const currentClickedCategoryButton = () => {
-
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -101,20 +105,42 @@ const updateSelectedTransactionType = (type) => {
     let bottomCalcSection = document.getElementById("bottom-calc-section") //worked after I set to variable
 
     if(type === SPENDING_BUTTON){
+        category = null
         currentTransactionType = TRANSACTION_TYPES[SPENDING]
         changeSpendingColor.classList.add("clicked-display-text-color")
         changeRevenueColor.classList.remove("clicked-display-text-color")
         bottomCalcSection.classList.add("spending-category-section");
         bottomCalcSection.classList.remove("revenue-category-section")
         populateCategorySection()
+        let categorySection = document.getElementById("container")
+        app.spendingTransactions.forEach(spendingTransaction => {
+            console.log(spendingTransaction)
+            console.log("LOOK")
+            const transactionDiv = document.createElement('div')  //.innerText = button; why doesn't this work
+            transactionDiv.classList.add("category-transaction")
+            transactionDiv.setAttribute("id", "Spending")
+            transactionDiv.innerHTML = "Spending - " + SPENDING_CATEGORIES_EMOJIS[spendingTransaction.category] + spendingTransaction.category + " - " + "$" + spendingTransaction.amount
+            categorySection.appendChild(transactionDiv)
+        })
         console.log(currentTransactionType);
     } else if(type === REVENUE_BUTTON){
+        category = null
         currentTransactionType = TRANSACTION_TYPES[REVENUE]
         changeRevenueColor.classList.add("clicked-display-text-color")
         changeSpendingColor.classList.remove("clicked-display-text-color")
         bottomCalcSection.classList.add("revenue-category-section");
         bottomCalcSection.classList.remove("spending-category-section")
         populateCategorySection()
+        let categorySection = document.getElementById("container")
+        app.revenueTransactions.forEach(revenueTransaction => {
+            console.log(revenueTransaction)
+            console.log("LOOK")
+            const transactionDiv = document.createElement('div')  //.innerText = button; why doesn't this work
+            transactionDiv.classList.add("category-transaction")
+            transactionDiv.setAttribute("id", "Revenue")
+            transactionDiv.innerHTML = "Revenue - " + INCOME_CATEGORIES_EMOJIS[revenueTransaction.category] + revenueTransaction.category + " - " + "$" + revenueTransaction.amount
+            categorySection.appendChild(transactionDiv)
+        })
         console.log(currentTransactionType);
     }
 }
@@ -149,12 +175,14 @@ const handleClickEvent = (event) => {
             let currentAmount = calc.getAmount()
             let frequency = document.getElementById("frequency-select").value
             let date = document.getElementById("transaction-date").value
-            // let category = document.getElementById("bottom-calc-section")
-
-            app.addTransaction(currentTransactionType, currentAmount, category, frequency, date)
-            calc.resetCalculator()
-            graph.upDateGraph()
-            graph.setupSVG()
+            if (!category) {
+                alert("Please select a category!")
+            } else {
+                app.addTransaction(currentTransactionType, currentAmount, category, frequency, date)
+                calc.resetCalculator()
+                graph.upDateGraph()
+                graph.setupSVG()
+            }
         break;
     }
 }
@@ -187,19 +215,19 @@ let goalBtn = document.getElementById("edit-goal-btn");
 let span2 = document.getElementsByClassName("close")[1];
 
 
-goalBtn.onclick = function() {
-  goalModal.style.display = "block";
-}
+// goalBtn.onclick = function() {
+//   goalModal.style.display = "block";
+// }
 
-span2.onclick = function() {
-  goalModal.style.display = "none";
-}
+// span2.onclick = function() {
+//   goalModal.style.display = "none";
+// }
 
-window.onclick = function(event) {
-  if (event.target == goalModal) {
-    goalModal.style.display = "none";
-  }
-}
+// window.onclick = function(event) {
+//   if (event.target == goalModal) {
+//     goalModal.style.display = "none";
+//   }
+// }
 
 
 document.addEventListener("click", handleClickEvent)

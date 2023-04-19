@@ -234,8 +234,14 @@ class Finanzas {
         }
     }
 
+    // transactionHistory(){
+    //     let categorySection = document.getElementById("container")
+    //     this.revenueTransactions.forEach(revenueTransaction => {
+            
+    //     })
+    // }
+
     addTransaction(transactionType, amount, category, frequency, date){
-        debugger
         const transaction = {
             transactionType,
             amount,

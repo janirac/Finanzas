@@ -69,12 +69,16 @@ export const INCOME_CATEGORIES_HTML = {
         id: "income",
         emoji: "💵",
         categoryText: "income"
-    },
-    [OTHER]: {
-        id: "other",
-        emoji: "",
-        categoryText: "create your own"
     }
+    // [OTHER]: {
+    //     id: "other",
+    //     emoji: "",
+    //     categoryText: "create your own"
+    // }
+}
+
+export const INCOME_CATEGORIES_EMOJIS = {
+    income: "💵"
 }
 
 export const SPENDING_CATEGORIES_HTML = {
@@ -112,12 +116,27 @@ export const SPENDING_CATEGORIES_HTML = {
         id: "activities",
         emoji: "🏕️",
         categoryText: "activities"
-    },
-    [OTHER]: {
-        id: "other",
-        emoji: "",
-        categoryText: "create your own"
     }
+    // [OTHER]: {
+    //     id: "other",
+    //     emoji: "",
+    //     categoryText: "create your own"
+    // }
+}
+
+export const SPENDING_CATEGORIES_EMOJIS = {
+    "student-loans":  "🎓",
+    "car-insurance": "🚗",
+    "groceries": "🥑",
+    "credit-card": "💳",
+    "rent": "🏠",
+    "utilities": "💡",
+    "activities": "🏕️",
+    // [OTHER]: {
+    //     id: "other",
+    //     emoji: "",
+    //     categoryText: "create your own"
+    // }
 }
 
 export const MONTH_NAMES = ["January", "February", "March", "April", "May", "June",
