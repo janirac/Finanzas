@@ -137,6 +137,7 @@ body .screen {
 body .top-of-app {
   display: flex;
   justify-content: space-between;
+  width: 98%;
 }
 body .middle-section {
   display: flex;
@@ -294,7 +295,7 @@ body .slider.round:before {
 .github-img {
   width: 30px;
   height: 30px;
-  margin: 10px 35px 0px 0px;
+  margin: 10px 5px 0px 0px;
 }
 
 .instructions-modal {
@@ -418,7 +419,9 @@ body .slider.round:before {
 }
 
 .selected-category-button {
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.4) 0px -3px 0px inset;
+  background-color: rgb(160, 160, 255);
+  color: white;
 }
 
 .category-transaction {
