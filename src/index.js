@@ -72,7 +72,7 @@ const populateCategorySection = () => {
         });
     }
 }
-
+ 
 document.addEventListener("DOMContentLoaded", async () => {
     // 1. find out how to write to the browser local storage or cookie
     // 2. Check the browser local storage for the finanza app configuration file.
