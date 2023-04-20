@@ -385,6 +385,16 @@ body {
   margin: 0px 0px 1px 167px;
 }
 
+.category-button{
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.category-button:hover {
+  background-color: rgb(160, 160, 255);
+  color: white;
+}
+
 .selected-category-button {
   box-shadow: 
     rgba(0, 0, 0, 0.4) 0px 2px 4px,
