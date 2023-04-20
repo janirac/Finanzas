@@ -37,7 +37,6 @@ let frequency = 0
 let date = ""
 
 const currentClickedCategoryButton = (element, categoryType) => {
-    console.log(categoryType)
     category = categoryType
     let selectedCats = document.getElementsByClassName("selected-category-button")
     if (selectedCats.length > 0) {
@@ -83,7 +82,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     if(!inflationRate) {
         inflationRate = await Finanzas.getInflationRate()
         localStorage.setItem("inflationRate", JSON.stringify(inflationRate))
-        console.log("inflation saved")
     }
 
     app = new Finanzas(inflationRate)
@@ -102,8 +100,6 @@ const updateHisorySection = () => {
     // let transactions = Object.assign([], app.spendingTransactions, app.revenueTransactions)
     
     app.spendingTransactions.forEach(spendingTransaction => {
-        console.log(spendingTransaction)
-        console.log("LOOK")
         const transactionDiv = document.createElement('div')  //.innerText = button; why doesn't this work
         transactionDiv.classList.add("category-transaction")
         transactionDiv.setAttribute("id", "Spending")
@@ -111,8 +107,6 @@ const updateHisorySection = () => {
         categorySection.appendChild(transactionDiv)
     })
     app.revenueTransactions.forEach(revenueTransaction => {
-        console.log(revenueTransaction)
-        console.log("LOOK")
         const transactionDiv = document.createElement('div')  //.innerText = button; why doesn't this work
         transactionDiv.classList.add("category-transaction")
         transactionDiv.setAttribute("id", "Revenue")
@@ -135,7 +129,6 @@ const updateSelectedTransactionType = (type) => {
         bottomCalcSection.classList.remove("revenue-category-section")
         populateCategorySection()
         updateHisorySection()
-        console.log(currentTransactionType);
     } else if(type === REVENUE_BUTTON){
         category = null
         currentTransactionType = TRANSACTION_TYPES[REVENUE]
@@ -145,7 +138,6 @@ const updateSelectedTransactionType = (type) => {
         bottomCalcSection.classList.remove("spending-category-section")
         populateCategorySection()
         updateHisorySection()
-        console.log(currentTransactionType);
     }
 }
 

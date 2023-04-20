@@ -4,7 +4,6 @@ class Calculator {
     constructor(){
         this.selectedKeys = []
         this.amount = 0
-        console.log(this.selectedKeys)
     }
 
     getAmount(){
@@ -36,7 +35,6 @@ class Calculator {
         }
 
         this.setAmount()
-        console.log(this.selectedKeys)
     }
 
     updateDisplayAmount(){

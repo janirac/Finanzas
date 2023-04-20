@@ -190,9 +190,7 @@ class Finanzas {
         })
 
         const data = await response.json()
-        console.log(data);
         const inflationRate = data[0].monthly_rate_pct
-        console.log(inflationRate)
         return inflationRate;
     }
 
@@ -220,7 +218,6 @@ class Finanzas {
         if(!name) {
             name = prompt("Please Enter Your Name", "Janira Crispin");
             localStorage.setItem("name", JSON.stringify(name))
-            console.log("name saved")
             this.name = name;
         } else {
             this.name = name
@@ -256,7 +253,6 @@ class Finanzas {
             this.totalSpending += transaction.amount
             
             this.totalSpendingWithInflation += this.totalSpending * this.inflationRate;
-            console.log(this.totalSpendingWithInflation)
             const dateMonthName = new Date(transaction.date).toLocaleString("en-US", {month: "short"})
 
             this.data.forEach((key, index) => {
@@ -281,21 +277,19 @@ class Finanzas {
             })
             
             this.largestRevenueAmount += transaction.amount
-            console.log(this.largestRevenueAmount)
-            console.log(this.data)
         }
         
         this.findLargestNumber()
         this.showTransactions()
     }
 
-    showTransactions(){
-        console.log(this.transactions)
-        console.log({
-            "spending": this.spendingTransactions,
-            "revenue": this.revenueTransactions
-        })
-    }
+    // showTransactions(){
+    //     console.log(this.transactions)
+    //     console.log({
+    //         "spending": this.spendingTransactions,
+    //         "revenue": this.revenueTransactions
+    //     })
+    // }
 }
 
 

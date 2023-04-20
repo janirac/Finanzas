@@ -1,22 +1,15 @@
 import * as d3 from "d3"
-import transactionData from '../../exampleTransactions.json';
-import { FREQUENCY, DAILY, WEEKLY, YEARLY, ONE_TIME, MONTH_NAMES, MONTHLY, BI_WEEKLY, BI_MONTHLY } from "./utils/constants";
 
 class Graph{
     constructor(app, calc){
         this.app = app
         this.calc = calc
-        // this.transactions = transactionData //file created for hard coded data
-        // this.datasetBuilder()
     }
 
     setupSVG(){
         // const data = this.app.getRevenueData()
         // const data2 = this.app.getSpendingData()
         const data = this.app.data
-        console.log(this.app)
-        console.log("here")
-        console.log(data)
 
         const margin = {top: 10, right: 30, bottom: 25, left: 50},
         width = 460,
@@ -31,13 +24,6 @@ class Graph{
 
         const subgroups = data.columns.slice(1)
         const months =  data.map(d => (d.month))
-        console.log(data)
-        console.log("after data")
-
-        console.log(subgroups)
-        console.log("after subgroups")
-        console.log(months)
-        // console.log("before subs after groups")
         
         const x = d3.scaleBand()
             .domain(months)
