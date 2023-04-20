@@ -312,7 +312,7 @@ body .slider.round:before {
 
 /* Modal Content/Box */
 .modal-info {
-  background-color: #fefefe;
+  background-color: #ffe1ff;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
@@ -327,6 +327,8 @@ body .slider.round:before {
   color: purple;
   align-content: center;
   align-items: center;
+  height: 275px;
+  justify-content: space-between;
 }
 
 .close {
