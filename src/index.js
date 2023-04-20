@@ -40,8 +40,6 @@ const currentClickedCategoryButton = (element, categoryType) => {
     console.log(categoryType)
     category = categoryType
     let selectedCats = document.getElementsByClassName("selected-category-button")
-    // selectedCats.forEach((element) => {
-        // })
     if (selectedCats.length > 0) {
         selectedCats[0].classList.remove("selected-category-button")
     }
@@ -98,6 +96,30 @@ document.addEventListener("DOMContentLoaded", async () => {
     populateCategorySection()
 })
 
+const updateHisorySection = () => {
+    let categorySection = document.getElementById("container")
+    categorySection.innerHTML = '';
+    // let transactions = Object.assign([], app.spendingTransactions, app.revenueTransactions)
+    
+    app.spendingTransactions.forEach(spendingTransaction => {
+        console.log(spendingTransaction)
+        console.log("LOOK")
+        const transactionDiv = document.createElement('div')  //.innerText = button; why doesn't this work
+        transactionDiv.classList.add("category-transaction")
+        transactionDiv.setAttribute("id", "Spending")
+        transactionDiv.innerHTML = "Spending - " + SPENDING_CATEGORIES_EMOJIS[spendingTransaction.category] + spendingTransaction.category + " - " + "$" + spendingTransaction.amount
+        categorySection.appendChild(transactionDiv)
+    })
+    app.revenueTransactions.forEach(revenueTransaction => {
+        console.log(revenueTransaction)
+        console.log("LOOK")
+        const transactionDiv = document.createElement('div')  //.innerText = button; why doesn't this work
+        transactionDiv.classList.add("category-transaction")
+        transactionDiv.setAttribute("id", "Revenue")
+        transactionDiv.innerHTML = "Revenue - " + INCOME_CATEGORIES_EMOJIS[revenueTransaction.category] + revenueTransaction.category + " - " + "$" + revenueTransaction.amount
+        categorySection.appendChild(transactionDiv)
+    })
+}
 
 const updateSelectedTransactionType = (type) => {
     let changeRevenueColor = document.getElementById("revenue-button")
@@ -112,16 +134,17 @@ const updateSelectedTransactionType = (type) => {
         bottomCalcSection.classList.add("spending-category-section");
         bottomCalcSection.classList.remove("revenue-category-section")
         populateCategorySection()
-        let categorySection = document.getElementById("container")
-        app.spendingTransactions.forEach(spendingTransaction => {
-            console.log(spendingTransaction)
-            console.log("LOOK")
-            const transactionDiv = document.createElement('div')  //.innerText = button; why doesn't this work
-            transactionDiv.classList.add("category-transaction")
-            transactionDiv.setAttribute("id", "Spending")
-            transactionDiv.innerHTML = "Spending - " + SPENDING_CATEGORIES_EMOJIS[spendingTransaction.category] + spendingTransaction.category + " - " + "$" + spendingTransaction.amount
-            categorySection.appendChild(transactionDiv)
-        })
+        // let categorySection = document.getElementById("container")
+        // app.spendingTransactions.forEach(spendingTransaction => {
+        //     console.log(spendingTransaction)
+        //     console.log("LOOK")
+        //     const transactionDiv = document.createElement('div')  //.innerText = button; why doesn't this work
+        //     transactionDiv.classList.add("category-transaction")
+        //     transactionDiv.setAttribute("id", "Spending")
+        //     transactionDiv.innerHTML = "Spending - " + SPENDING_CATEGORIES_EMOJIS[spendingTransaction.category] + spendingTransaction.category + " - " + "$" + spendingTransaction.amount
+        //     categorySection.appendChild(transactionDiv)
+        // })
+        updateHisorySection()
         console.log(currentTransactionType);
     } else if(type === REVENUE_BUTTON){
         category = null
@@ -131,16 +154,17 @@ const updateSelectedTransactionType = (type) => {
         bottomCalcSection.classList.add("revenue-category-section");
         bottomCalcSection.classList.remove("spending-category-section")
         populateCategorySection()
-        let categorySection = document.getElementById("container")
-        app.revenueTransactions.forEach(revenueTransaction => {
-            console.log(revenueTransaction)
-            console.log("LOOK")
-            const transactionDiv = document.createElement('div')  //.innerText = button; why doesn't this work
-            transactionDiv.classList.add("category-transaction")
-            transactionDiv.setAttribute("id", "Revenue")
-            transactionDiv.innerHTML = "Revenue - " + INCOME_CATEGORIES_EMOJIS[revenueTransaction.category] + revenueTransaction.category + " - " + "$" + revenueTransaction.amount
-            categorySection.appendChild(transactionDiv)
-        })
+        // let categorySection = document.getElementById("container")
+        // app.revenueTransactions.forEach(revenueTransaction => {
+        //     console.log(revenueTransaction)
+        //     console.log("LOOK")
+        //     const transactionDiv = document.createElement('div')  //.innerText = button; why doesn't this work
+        //     transactionDiv.classList.add("category-transaction")
+        //     transactionDiv.setAttribute("id", "Revenue")
+        //     transactionDiv.innerHTML = "Revenue - " + INCOME_CATEGORIES_EMOJIS[revenueTransaction.category] + revenueTransaction.category + " - " + "$" + revenueTransaction.amount
+        //     categorySection.appendChild(transactionDiv)
+        // })
+        updateHisorySection()
         console.log(currentTransactionType);
     }
 }
@@ -180,6 +204,7 @@ const handleClickEvent = (event) => {
             } else {
                 app.addTransaction(currentTransactionType, currentAmount, category, frequency, date)
                 calc.resetCalculator()
+                updateHisorySection()
                 graph.upDateGraph()
                 graph.setupSVG()
             }
