@@ -280,7 +280,7 @@ class Finanzas {
         }
         
         this.findLargestNumber()
-        this.showTransactions()
+        // this.showTransactions()
     }
 
     // showTransactions(){
